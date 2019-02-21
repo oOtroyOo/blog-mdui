@@ -75,7 +75,13 @@
             <div class="k-header-menus" id="k-menus">
         {% for menu in site.data.menus %}
         {% if menu.name != "navSearch" %}
-        <a href="{{menu.url | prepend: site.baseurl }}" class="mdui-btn mdui-ripple {% if menu.url  == page.url %}mdui-list-item-active{% endif %}">{{menu.name}}</a>
+        <a href="{{menu.url | prepend: site.baseurl }}" class="mdui-btn mdui-ripple {% if menu.url  == page.url %}mdui-list-item-active{% endif %}">
+            {% if lang.menu[menu.name] != null %}
+                {{lang.menu[menu.name]}}
+            {% else %}            
+                {{menu.name}}
+            {% endif %}
+         </a>
         {% endif %}
         {% endfor %}
         </div>

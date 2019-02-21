@@ -1,10 +1,10 @@
-- name: ${site.data.lang[site.data.site.lang].menu.home}
+- name: home
   url: /
   icon: home
-- name: ${menu.category}
+- name: category
   url: /category/
   icon: "&#xe53b;"
-- name: ${menu.tags}
+- name: tags
   url: /tags/
   icon: "&#xe893;"
 - name: LOVER
@@ -14,7 +14,7 @@
 - name: FRIENDS
   url: /friends/
   icon: "&#xe8a3;"
-- name: ${menu.editor}
+- name: editor
   url: /editor/
   icon: "&#xe150;"
 - name: navSearch
