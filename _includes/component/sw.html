@@ -1,7 +1,9 @@
 <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register("{{ "/sw.js" | relative_url }}").then(function() {
-            console.log("Service Worker Registered");
-        });
-    }
+    {% if site.serviceWorker %}
+     if ('serviceWorker' in navigator) {
+         navigator.serviceWorker.register("{{ "/sw.js" | relative_url }}").then(function() {
+             console.log("Service Worker Registered");
+         });
+     }
+    {% endif %}
 </script>

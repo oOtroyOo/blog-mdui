@@ -1,10 +1,11 @@
-title: "Jekyll-Theme-MDUI"
+title: "oOtroyOo Blog"
 description: "A Jekyll theme based on MDUI"
 url: 
-baseurl: ""
-author: "KeJun"
+baseurl: "/blog-mdui"
+author: "oOtroyOo"
 paginate: 5
-paginate_path: "/blog/page:num/"
+paginate_path: "/blog-mdui/blog/page:num/"
+serviceWorker : false 
 
 plugins:
   - jekyll-sitemap

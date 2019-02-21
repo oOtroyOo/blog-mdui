@@ -37,6 +37,11 @@ zh-CN:
       toLinkedin: "分享到 Linkedin"
       toQq: "分享到 QQ"
       toTelegram: "分享到 Telegram"
+   menu:
+      home: "首页"
+      category : "分类"
+      tags: "标签"
+      editor: "编写"
 
 en-US:
    meng:
@@ -77,7 +82,12 @@ en-US:
       toLinkedin: "Share to Linkedin"
       toQq: "Share to QQ"
       toTelegram: "Share to Telegram"
-
+      
+   menu:
+      home: "HOME"
+      category: "CATEGORY"
+      tags: "TAGS"
+      editor: "EDITOR"
 TEST:
    meng:
       head_card: 

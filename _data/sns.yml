@@ -1,11 +1,11 @@
 - name: bilibili
-  url: 
+  url: https://space.bilibili.com/4470556
 
 - name: facebook
   url: 
 
 - name: github
-  url: https://github.com
+  url: https://github.com/oOtroyOo
 
 - name: gplus
   url: 
@@ -17,7 +17,7 @@
   url: 
 
 - name: telegram
-  url: https://web.telegram.org
+  url: 
 
 - name: tumblr
   url: 
@@ -26,7 +26,7 @@
   url: https://twitter.com/
 
 - name: weibo
-  url: 
+  url: https://weibo.com/u/2043748631
 
 - name: zhihu
   url: 
