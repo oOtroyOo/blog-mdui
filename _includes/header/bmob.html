@@ -1,8 +1,14 @@
 {% if site.data.site.bmob != null && site.data.site.bmob.appid !=null %}
+<script src="{{ "/assets/dist/Bmob-1.6.7.min.js" | prepend: site.baseurl }}"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    var Bmob = require("{{ '/assets/dist/Bmob-1.6.7.min.js' | prepend: site.baseurl }}");
+    /*var Bmob ={   % include header/Bmob-1.6.7.min.js %   }*/   
     Bmob.initialize("{{site.data.site.bmob.appid}}", "{{site.data.site.bmob.apikey}}");
-    console.log(Bmob);
+    var query = Bmob.Query('Test');
+    query.find().then(res => {
+        var tab = res[0];
+        var name = tab.name;
+    });
 </script>
 
 {% endif %}
