@@ -1,5 +1,13 @@
 <script>
     {% if site.serviceWorker %}
+
+    function isValidIP(ip) {
+        var reSpaceCheck = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])/;
+        return (reSpaceCheck.test(ip));
+    }
+    console.log(window.location.host);
+    console.log(isValidIP(window.location.host));
+    if (!isValidIP(window.location.host))
      if ('serviceWorker' in navigator) {
          navigator.serviceWorker.register("{{ "/sw.js" | relative_url }}").then(function() {
              console.log("Service Worker Registered");
