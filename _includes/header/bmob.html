@@ -1,0 +1,8 @@
+{% if site.data.site.bmob != null && site.data.site.bmob.appid !=null %}
+<script>
+    var Bmob = require("{{ '/assets/dist/Bmob-1.6.7.min.js' | prepend: site.baseurl }}");
+    Bmob.initialize("{{site.data.site.bmob.appid}}", "{{site.data.site.bmob.apikey}}");
+    console.log(Bmob);
+</script>
+
+{% endif %}
