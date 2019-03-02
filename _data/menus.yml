@@ -7,13 +7,13 @@
 - name: tags
   url: /tags/
   icon: "&#xe893;"
-- name: LOVER
-  url: /love/
-  icon: "&#xe87d;"
-  color: "red"
-- name: FRIENDS
-  url: /friends/
-  icon: "&#xe8a3;"
+# - name: LOVER
+#   url: /love/
+#   icon: "&#xe87d;"
+#   color: "red"
+# - name: FRIENDS
+#   url: /friends/
+#   icon: "&#xe8a3;"
 - name: editor
   url: /editor/
   icon: "&#xe150;"
