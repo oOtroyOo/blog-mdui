@@ -44,6 +44,8 @@ layout: compress
                 {% include meng/cplayer.html %}
             {% elsif  site.data.meng.music_player.player == "aplayer"%}
                 {% include meng/aplayer.html %}
+            {% elsif  site.data.meng.music_player.player == "neplayer"%}
+                {% include meng/neplayer.html %}
             {% endif %}
         {% endif %}
     </body>

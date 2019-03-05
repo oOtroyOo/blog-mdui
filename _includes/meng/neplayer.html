@@ -1,0 +1,79 @@
+{% assign aplayer = site.data.meng.music_player %}
+<style>
+    @media screen and (max-width: 600px){
+        .k-music-card{
+            transform:translateX(-250px)
+        }
+    }
+    .k-music-card{
+        width: 300px;
+       position: fixed;
+        bottom: 0px;
+        z-index: 999;
+        transition: transform .5s ease;
+    }
+.aplayer{
+    float: left;
+    width: 250px;
+    margin: 0 auto;
+    position: relative;
+    background: rgb(255,255,255);
+    box-sizing: border-box;
+    box-shadow: none;
+}
+.k-music-btn{
+    text-align: center;
+    line-height: 90px;
+    color: #fff;
+    width: 20px;
+    height: 90px;
+    background: {{aplayer.button_color}} none repeat scroll 0% 0%;
+    position: relative;
+    right: 10px;
+    bottom: -10px;
+    box-sizing: border-box;
+    border-left: none;
+    cursor: pointer;
+    display: box-shadow:;
+    float: right;
+}
+</style>
+<div class="k-music-card">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=110 src="//music.163.com/outchain/player?type=0&id={{aplayer.playlist}}&auto=0&height=90"></iframe>
+    <div class="k-music-btn">></div>
+</div>
+<script>
+function onFrame(){
+   console.log("onFrame")
+}
+
+$(".aplayer-list").addClass("aplayer-list-hide");
+if($(window).width()<=600){
+    var flag = true;
+}else{
+    var flag = false;
+}
+
+$('.k-music-btn').click(function(){
+    if (flag == false){
+        var w = $('.k-music-card').width()-30;
+        $('.k-music-card').css('transform','translateX(-'+w+'px)');
+        flag = true;
+    }else if(flag == true){
+        $('.k-music-card').css('transform','translateX(0px)');
+        flag = false;
+    }
+    
+    if (!$(".aplayer-list").hasClass('aplayer-list-hide')) {
+        $(".aplayer-list").addClass('aplayer-list-hide');
+    }
+});
+    document.addEventListener("visibilitychange", function() {
+	    if(document.visibilityState == "hidden" ){
+           ap.pause();
+        }
+        if(document.visibilityState == "visible"){
+            ap.play();
+        }
+    }, false);
+</script>

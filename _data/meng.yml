@@ -49,8 +49,9 @@ animation: # animate.css, see https://github.com/daneden/animate.css
 #!!!!do not use!!!!
 
 music_player:
-  player: "aplayer" #cplayer or aplayer
-  button_color: "#1abc9c"
+  player: "neplayer" #cplayer or aplayer
+  button_color: "#f13"
+  playlist : 593580032
   music:
     - title: ''
       author: ''
