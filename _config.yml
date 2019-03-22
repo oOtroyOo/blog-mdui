@@ -6,6 +6,7 @@ author: "oOtroyOo"
 paginate: 5
 paginate_path: "/blog-mdui/blog/page:num/"
 serviceWorker : true 
+beian : "蜀ICP备18009358号-1"
 
 plugins:
   - jekyll-sitemap
