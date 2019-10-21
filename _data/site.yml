@@ -1,7 +1,7 @@
 head: 
    favicon: "https://ooo.0o0.ooo/2017/05/27/59294212bc16e.png" #  the favicon
-   high_res_favicon: "https://ooo.0o0.ooo/2017/06/08/5939484dc618e.png" #  the favicon using high quality format
-   apple_touch_icon: "https://ooo.0o0.ooo/2017/06/08/5939484dc618e.png" # the iOS Home button icon
+   high_res_favicon: "https://i.loli.net/2019/10/21/65WROaXD2bwYfrg.png" #  the favicon using high quality format
+   apple_touch_icon: "https://i.loli.net/2019/10/21/65WROaXD2bwYfrg.png" # the iOS Home button icon
    keywords: "blog jekyll mdui theme" #  the site keywords
 
 uiux:
@@ -14,7 +14,7 @@ background:
    purecolor: "#eeeeee" # the background color
 
 img: 
-   avatar: "https://ooo.0o0.ooo/2017/05/26/5928368d409dd.png" # your avatar
+   avatar: "https://i.loli.net/2019/10/21/65WROaXD2bwYfrg.png" # your avatar
 
 card: 
    card_shadow: 1 # card shadow (0-24), 0 is not displayed
