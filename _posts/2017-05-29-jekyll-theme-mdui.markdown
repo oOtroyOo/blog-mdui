@@ -5,6 +5,7 @@ date:   2017-5-29 12:22:06 +0800
 categories: Living
 tags: jekyll theme liquid
 img: https://ooo.0o0.ooo/2017/05/29/592ba283bfac9.jpg
+author: kejun
 ---
 A Jekyll theme based on MDUI.
 

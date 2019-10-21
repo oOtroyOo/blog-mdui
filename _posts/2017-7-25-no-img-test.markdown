@@ -5,6 +5,7 @@ date: 2017-7-25 0:0:0 +0800
 categories: Living
 tags: mdui jekyll theme editor 
 img: 
+author: kejun
 ---
 静态博客在线攥写文章不是梦。
 
