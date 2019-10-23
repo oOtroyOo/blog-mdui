@@ -10,7 +10,7 @@ author: oOtroyOo
 # 说明文档
 
 
-###  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases/tag/qt)
+###  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
 - 首次安装需要卸载原版App
 - 首次语言选择会退出一次App
 - 如果官方更新了App，就得重新破解，如果只是更新资源是没问题的
