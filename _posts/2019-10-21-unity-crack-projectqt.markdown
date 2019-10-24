@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Unity 手游破解流程
+title: Unity 手游逆向工程
 date:  2019-10-21 22:28:51 +0800
 categories: Unity
 tags: 
@@ -12,6 +12,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
 
 
 ###  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
+- 如果打不开，请长按/右键 - 新标签打开/新窗口打开
 - 首次安装需要卸载原版App
 - 首次语言选择会退出一次App
 - 如果官方更新了App，就得重新破解，如果只是更新资源是没问题的
