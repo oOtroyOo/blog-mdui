@@ -94,7 +94,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
 - `UserCompanionRecord`
   - 新增构造方法
   ``` C#
-  //此处更改需要先保存模块，否则下文有一条更改会报错
+  //此处更改需要及时保存模块，下文有一条更改会引用这里I
   public UserCompanionRecord(string id)
   {
     this.id = id;
