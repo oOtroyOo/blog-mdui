@@ -55,7 +55,7 @@ comment:
   valine_placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!"
 
 prism:
-  themes: prism-okaidia
+  themes: prism-coy
   components: 
     - bash 
   plugins: 

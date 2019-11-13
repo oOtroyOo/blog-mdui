@@ -93,7 +93,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
 ## 开启伴侣动画
 - `UserCompanionRecord`
   - 新增构造方法
-  ``` C#
+  ``` csharp
   //此处更改需要及时保存模块，下文有一条更改会引用这里
   public UserCompanionRecord(string id)
   {
@@ -106,13 +106,13 @@ lastupdate : 2019-10-23 22:00:00 +0800
   }
   ```
   - 修改`UserCompanionRecord(JSONNode json)`和`Update(JSONNode json)`2处Dictionary-Value分配
-  ``` C#
+  ``` csharp
   Dictionary<string, int> value = keyValuePair.Value.JSONDict.ToDictionary((KeyValuePair<string, JSONNode> kvp) => kvp.Key, (KeyValuePair<string, JSONNode> kvp) => kvp.Value.AsInt);
   》》》
    Dictionary<string, int> value = keyValuePair.Value.JSONDict.ToDictionary((KeyValuePair<string, JSONNode> kvp) => kvp.Key, (KeyValuePair<string, JSONNode> kvp) => 1);
   ```
 - `EpisodeMainPage`
-  ``` C#
+  ``` csharp
   private void SetupAnimationElement(string companionId)
 
   >>>
@@ -134,7 +134,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
   }
   ```
 - `CompanionSettingHelper`
-    ``` C#
+    ``` csharp
   public static CompanionAnimationSetting.AnimationStatus GetEpisodeAnimationStatus(string companionId, int episodeId, int subEpisodeId)
 
   >>>
@@ -146,7 +146,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
 - `CompanionBanner`
   （此修改可能会使下次反编出现较大差异）
 
-  ``` C#
+  ``` csharp
     }
     this.ConditionGrid.Reposition();
     this.unlockedContent.SetActive(false);
@@ -172,7 +172,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
   ```
   ## 切换语言
 - `Localization`
-  ``` C#
+  ``` csharp
   private static string Get(Localization.Language pack, string key)
   {
     key = key.Trim();
@@ -207,7 +207,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
   ```
 - `LoginManager`
 （此修改可能会使下次反编出现较大差异）
-``` C#
+``` csharp
   public IEnumerator CheckSystem()
   {
     bool wait = true;
@@ -228,7 +228,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
     }
 ```
 //因为不明原因，首次选择中文，会造成无限下载资源，暂时没有找到完美的解决方法。此处修改即强制退出App
-  ``` C#
+  ``` csharp
     if (!string.IsNullOrEmpty(Config.Language))
     {
       this.StartCoroutine(this.CheckDownload());
@@ -247,7 +247,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
   ## 开启所有人物的事件相簿按钮
 （目前仅有Erika有这个按钮，其他角色都为灰色）
 - `PetDetailPage_v2`
-  ``` C#
+  ``` csharp
   UILabel label = this.btnL.transform.FindHiddenComponent(new string[]
   {
     "Label"
@@ -286,7 +286,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
     }
   }
   ```
-  ``` C#
+  ``` csharp
   btn_cardView.gameObject.SetActive(****)
   》》》全部更改为 
   btn_cardView.gameObject.SetActive(true)
@@ -294,7 +294,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
 
   ## 解锁人物5星卡片
 - `PetDetailFullViewButton`
-  ``` C#
+  ``` csharp
   for (int i = 0; i < this.button.Length; i++)
   {
     bool flag = i > star;
@@ -314,13 +314,13 @@ lastupdate : 2019-10-23 22:00:00 +0800
   ## 解锁活动CG 
   （目前仅有Erika有这个CG，其他角色都没）
  - `EventRewardPopup`
-  ``` C#
+  ``` csharp
   this.scenesLockBlock[num].SetActive(EventManager.CurrentEventLevel() < levelSetting[i].level);        
   >>>
   this.scenesLockBlock[num].SetActive(false);
   ```
 - `EventAlbumPage`
-  ``` C#
+  ``` csharp
   private bool FindCgId(CharacterBaseInfo_v2 serialData, string cgId)
   {
     if (serialData == null || serialData.cgArray == null)
@@ -345,7 +345,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
   ``` 
 ## 收集册
 - `AlbumPage`
-``` C#
+``` csharp
   catch (Exception)
   {
       this.petSerializedData = null;
@@ -356,7 +356,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
     this.petSerializedData = petConfig.CreateRawPetData(1, 5, 0);
   }
 ```
-``` C#
+``` csharp
   foreach (KeyValuePair<string, UserCompanionRecord> keyValuePair2 in CompanionManager.Instance.UserCompanions)
   {
     if (keyValuePair2.Value.id == keyValuePair.Value.id)
