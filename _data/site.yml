@@ -58,6 +58,10 @@ prism:
   themes: prism-coy
   components: 
     - bash 
+    - csharp
+    - markup
+    - clike
+    - javascript
   plugins: 
 
 mathjax: true

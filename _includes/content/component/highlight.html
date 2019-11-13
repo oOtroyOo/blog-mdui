@@ -1,12 +1,7 @@
 <link href="//cdn.bootcss.com/prism/9000.0.1/themes/{{site.data.site.prism.themes}}.css" rel="stylesheet">
 <script src="//cdn.bootcss.com/prism/9000.0.1/prism.js"></script>
-<script src="//cdn.bootcss.com/prism/9000.0.1/components/prism-csharp.js"></script>
-<script src="//cdn.bootcss.com/prism/9000.0.1/components/prism-markup.js"></script>
-<script src="//cdn.bootcss.com/prism/9000.0.1/components/prism-clike.js"></script>
-<script src="//cdn.bootcss.com/prism/9000.0.1/components/prism-javascript.js"></script>
 <script>
 Prism.languages.lua={comment:/^#!.+|--(?:\[(=*)\[[\s\S]*?\]\1\]|.*)/m,string:{pattern:/(["'])(?:(?!\1)[^\\\r\n]|\\z(?:\r\n|\s)|\\(?:\r\n|[\s\S]))*\1|\[(=*)\[[\s\S]*?\]\2\]/,greedy:!0},number:/\b0x[a-f\d]+\.?[a-f\d]*(?:p[+-]?\d+)?\b|\b\d+(?:\.\B|\.?\d*(?:e[+-]?\d+)?\b)|\B\.\d+(?:e[+-]?\d+)?\b/i,keyword:/\b(?:and|break|do|else|elseif|end|false|for|function|goto|if|in|local|nil|not|or|repeat|return|then|true|until|while)\b/,function:/(?!\d)\w+(?=\s*(?:[({]))/,operator:[/[-+*%^&|#]|\/\/?|<[<=]?|>[>=]?|[=~]=?/,{pattern:/(^|[^.])\.\.(?!\.)/,lookbehind:!0}],punctuation:/[\[\](){},;]|\.+|:+/};
-
 </script>
 {%for l in site.data.site.prism.components%}
 <script src="//cdn.bootcss.com/prism/9000.0.1/components/prism-{{ l }}.min.js"></script>
