@@ -62,6 +62,7 @@ prism:
     - markup
     - clike
     - javascript
+    - java
   plugins: 
 
 mathjax: true
