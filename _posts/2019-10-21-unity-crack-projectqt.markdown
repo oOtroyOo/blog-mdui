@@ -83,7 +83,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
 - 准备好签名文件
     - 如果你有准备好的签名文件，请使用适合你准备好的签名命令
     - 如果你从前文下载的签名，执行以下命令 （自己看清楚文件名）
-  ``` (cmd)
+  ``` bash
   java -jar "signapk.jar" testkey.x509.pem testkey.pk8 project-qt_268.apk project-qt_268_sign.apk
   ```
 
@@ -207,26 +207,21 @@ lastupdate : 2019-10-23 22:00:00 +0800
   ```
 - `LoginManager`
 （此修改可能会使下次反编出现较大差异）
+
 ``` csharp
+
   public IEnumerator CheckSystem()
   {
++   Config.LangAbleChange = true;
     bool wait = true;
     bool anyErr = false;
     if (this.checkingMessage != null)
     {
       this.checkingMessage.gameObject.SetActive(true);
     }
-  》》》
-  public IEnumerator CheckSystem()
-  {
-    Config.LangAbleChange = true;
-    bool wait = true;
-    bool anyErr = false;
-    if (this.checkingMessage != null)
-    {
-        this.checkingMessage.gameObject.SetActive(true);
-    }
+    
 ```
+
 //因为不明原因，首次选择中文，会造成无限下载资源，暂时没有找到完美的解决方法。此处修改即强制退出App
   ``` csharp
     if (!string.IsNullOrEmpty(Config.Language))
@@ -356,6 +351,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
     this.petSerializedData = petConfig.CreateRawPetData(1, 5, 0);
   }
 ```
+
 ``` csharp
   foreach (KeyValuePair<string, UserCompanionRecord> keyValuePair2 in CompanionManager.Instance.UserCompanions)
   {
@@ -367,22 +363,35 @@ lastupdate : 2019-10-23 22:00:00 +0800
     }
   }
   list.Add(item);
->>>
+    //注 ：此处需要先修改上文 UserCompanionRecord 构造方法
++  if (item == string.Empty)
++  {
++    item = new UserCompanionRecord(keyValuePair.Value.id);
++  }
 
-  foreach (KeyValuePair<string, UserCompanionRecord> keyValuePair2 in CompanionManager.Instance.UserCompanions)
-  {
-    if (keyValuePair2.Value.id == keyValuePair.Value.id)
-    {
-      this.unlockNum++;
-      item = keyValuePair2.Value;
-      break;
-    }
-  }
-  //注 ：此处需要先修改上文 UserCompanionRecord 构造方法
-  if (item == string.Empty)
-  {
-    item = new UserCompanionRecord(keyValuePair.Value.id);
-  }
-  list.Add(item);
+
 ```
 
+# 附加修改
+- **以下修改有敏感内容，未加入安装包中**
+
+## 攻击力
+
+    - 仅限我方在左侧有效 ，即所有关卡均有效
+    - pvp可用，但是胜负仍然无法控制
+  
+- `Pet`
+  
+
+``` csharp
+  public float GetAttack(bool withBuff = true, BlockType targetType = BlockType.ANY_COLOR)
+  {
++   if (!this.IsEnemy)
++   {
++      return 9999;
++   }
+    float num = this.GetAbility(withBuff, null).atk;
+    if (this.core != null)
+    {
+
+```
