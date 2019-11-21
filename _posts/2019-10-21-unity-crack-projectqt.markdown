@@ -353,21 +353,67 @@ lastupdate : 2019-10-23 22:00:00 +0800
 ```
 
 ``` csharp
-  foreach (KeyValuePair<string, UserCompanionRecord> keyValuePair2 in CompanionManager.Instance.UserCompanions)
+  public void OnMonstersButtonClick()
   {
-    if (keyValuePair2.Value.id == keyValuePair.Value.id)
+    this.mode = 1;
+    base.Title = Localization.Get("album_boss_title");
+    this.bg_loader.Unload();
+    this.bg_loader.LoadTex("/menu/album_bg2.png");
+    this.unlockNum = 0;
+    this.totalNum = 0;
+    List<object> list = new List<object>();
+    foreach (KeyValuePair<string, CompanionSetting> keyValuePair in CompanionManager.Instance.CompanionSettings)
     {
-      this.unlockNum++;
-      item = keyValuePair2.Value;
-      break;
+      object item = string.Empty;
+      this.totalNum++;
+      foreach (KeyValuePair<string, UserCompanionRecord> keyValuePair2 in CompanionManager.Instance.UserCompanions)
+      {
+        if (keyValuePair2.Value.id == keyValuePair.Value.id)
+        {
+          this.unlockNum++;
+          item = keyValuePair2.Value;
+          break;
+        }
+      }
+      list.Add(item);
     }
+    this.scrollModule.SetDataList(list, false, 0);
+    this.numLabel.text = this.unlockNum + "/" + this.totalNum;
   }
-  list.Add(item);
+  >>>
     //注 ：此处需要先修改上文 UserCompanionRecord 构造方法
-+  if (item == string.Empty)
-+  {
-+    item = new UserCompanionRecord(keyValuePair.Value.id);
-+  }
+  public void OnMonstersButtonClick()
+  {
+    this.mode = 1;
+    base.Title = Localization.Get("album_boss_title");
+    this.bg_loader.Unload();
+    this.bg_loader.LoadTex("/menu/album_bg2.png");
+    this.unlockNum = 0;
+    this.totalNum = 0;
+    List<object> list = new List<object>();
+    foreach (KeyValuePair<string, CompanionSetting> keyValuePair in CompanionManager.Instance.CompanionSettings)
+    {
+      object item = string.Empty;
+      this.totalNum++;
+      foreach (KeyValuePair<string, UserCompanionRecord> keyValuePair2 in CompanionManager.Instance.UserCompanions)
+      {
+        if (keyValuePair2.Value.id == keyValuePair.Value.id)
+        {
+          this.unlockNum++;
+          item = keyValuePair2.Value;
+          break;
+        }
+      }
+      if (item == string.Empty)
+      {
+        item = new UserCompanionRecord(keyValuePair.Value.id);
+      }
+      list.Add(item);
+    }
+    this.scrollModule.SetDataList(list, false, 0);
+    this.numLabel.text = this.unlockNum + "/" + this.totalNum;
+  }
+
 
 
 ```

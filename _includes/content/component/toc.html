@@ -191,7 +191,7 @@
                                 }
                                 a("li", d).removeClass(i),
                                     b = a("li:eq(" + g + ")", d).addClass(i),
-                                    e.onHighlight(b),console.log("li",a,b,c,d,e,f,g)
+                                    e.onHighlight(b)
                             }, 50)
                     };
                 return e.highlightOnScroll && (a(window).bind("scroll", k), k()),
@@ -210,7 +210,6 @@
                                     a(window).unbind("scroll", k), j(c, function () {
                                         a(window).bind("scroll", k)
                                     }), b.trigger("selected", a(this).attr("href"));
-                                    console.log("click",a,b,c,d,e,f,g);
                                     e.onHighlight()
                                 }),
                                 m = a("<li/>").addClass(e.itemClass(d, f, g, e.prefix)).append(l);
