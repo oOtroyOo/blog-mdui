@@ -115,7 +115,7 @@
                         if (options.top <= scrolled && options.bottom >= scrolled && !$(this).hasClass("pinned")) {
                             removePinClasses($(this));
                             $(this).css("top", options.offset);
-                            $(this).addClass("pinned")
+                            $(this).addClass("pinned");
                         }
                         if (scrolled < options.top && !$(this).hasClass("pin-top")) {
                             removePinClasses($(this));
@@ -191,7 +191,7 @@
                                 }
                                 a("li", d).removeClass(i),
                                     b = a("li:eq(" + g + ")", d).addClass(i),
-                                    e.onHighlight(b)
+                                    e.onHighlight(b),console.log("li",a,b,c,d,e,f,g)
                             }, 50)
                     };
                 return e.highlightOnScroll && (a(window).bind("scroll", k), k()),
@@ -199,7 +199,22 @@
                         var b = a(this),
                             c = a(e.listType);
                         g.each(function (d, f) {
-                            var g = a(f); h.push(g.offset().top - e.highlightOffset); var i = e.anchorName(d, f, e.prefix); if (f.id !== i) { a("<span/>").attr("id", i).insertBefore(g) } var l = a("<a/>").text(e.headerText(d, f, g)).attr("href", "#" + i).bind("click", function (c) { a(window).unbind("scroll", k), j(c, function () { a(window).bind("scroll", k) }), b.trigger("selected", a(this).attr("href")) }), m = a("<li/>").addClass(e.itemClass(d, f, g, e.prefix)).append(l); c.append(m)
+                            var g = a(f);
+                            h.push(g.offset().top - e.highlightOffset);
+                            var i = e.anchorName(d, f, e.prefix);
+                            if (f.id !== i) {
+                                a("<span/>").attr("id", i).insertBefore(g)
+                            }
+                            var l = a("<a/>").text(e.headerText(d, f, g)).attr("href", "#" + i)
+                                .bind("click", function (c) {
+                                    a(window).unbind("scroll", k), j(c, function () {
+                                        a(window).bind("scroll", k)
+                                    }), b.trigger("selected", a(this).attr("href"));
+                                    console.log("click",a,b,c,d,e,f,g);
+                                    e.onHighlight()
+                                }),
+                                m = a("<li/>").addClass(e.itemClass(d, f, g, e.prefix)).append(l);
+                            c.append(m)
                         }), b.html(c)
                     })
             }, jQuery.fn.toc.defaults = {
@@ -245,7 +260,7 @@
                     var activePositon = $(".toc-active").position();
                     if (activePositon != undefined) {
                         var offset = topoffset - activePositon.top;
-                        $('#k-toc-card').css("top",offset).css("transition", 'top 200ms');
+                        $('#k-toc-card').css("top", offset)
                     }
                 }
             }
@@ -259,6 +274,12 @@
     });
 </script>
 <style>
+    .pinned {
+        transition: top;
+        transition-duration: 500ms;
+        transition-delay: 100ms;
+    }
+
     #toc .toc-h1 {
         font-weight: bold
     }
