@@ -12,9 +12,11 @@ var urlsToCache = [
     {% endif %}
   {% endfor %}
 
+  {% comment %} 
   {% for post in site.posts %}
     '{{ post.url }}',
-  {% endfor %}
+  {% endfor %} 
+  {% endcomment %}
 
   {% for file in site.static_files %}
     '{{ file.path }}',
