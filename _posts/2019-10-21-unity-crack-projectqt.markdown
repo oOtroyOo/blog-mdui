@@ -239,6 +239,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
   });
   ```
 
+
   ## 开启所有人物的事件相簿按钮
 目前仅有Erica(女仆)、Clara(化学老师) 可以点击按钮，其他角色都为灰色
 - `PetDetailPage_v2`
@@ -281,13 +282,16 @@ lastupdate : 2019-11-24 00:00:00 +0800
     }
   }
   ```
-  ``` csharp
+
+  ## 解锁人物5星卡片
+
+- `PetDetailPage_v2`
+    ``` csharp
   btn_cardView.gameObject.SetActive(****)
   》》》全部更改为 
   btn_cardView.gameObject.SetActive(true)
   ```
 
-  ## 解锁人物5星卡片
 - `PetDetailFullViewButton`
   ``` csharp
   for (int i = 0; i < this.button.Length; i++)
@@ -349,40 +353,16 @@ lastupdate : 2019-11-24 00:00:00 +0800
  >>>
   catch (Exception)
   {
-    this.petSerializedData = petConfig.CreateRawPetData(1, 5, 0);
+    this.petSerializedData = petConfig.CreateRawPetData(1, 4, 0);
   }
 ```
 
 ``` csharp
   public void OnMonstersButtonClick()
-  {
-    this.mode = 1;
-    base.Title = Localization.Get("album_boss_title");
-    this.bg_loader.Unload();
-    this.bg_loader.LoadTex("/menu/album_bg2.png");
-    this.unlockNum = 0;
-    this.totalNum = 0;
-    List<object> list = new List<object>();
-    foreach (KeyValuePair<string, CompanionSetting> keyValuePair in CompanionManager.Instance.CompanionSettings)
-    {
-      object item = string.Empty;
-      this.totalNum++;
-      foreach (KeyValuePair<string, UserCompanionRecord> keyValuePair2 in CompanionManager.Instance.UserCompanions)
-      {
-        if (keyValuePair2.Value.id == keyValuePair.Value.id)
-        {
-          this.unlockNum++;
-          item = keyValuePair2.Value;
-          break;
-        }
-      }
-      list.Add(item);
-    }
-    this.scrollModule.SetDataList(list, false, 0);
-    this.numLabel.text = this.unlockNum + "/" + this.totalNum;
-  }
+  
   >>>
-    //注 ：此处需要先修改上文 UserCompanionRecord 构造方法
+  
+  //注 ：此处需要先修改上文 UserCompanionRecord 构造方法
   public void OnMonstersButtonClick()
   {
     this.mode = 1;
