@@ -432,9 +432,9 @@ lastupdate : 2019-11-24 00:00:00 +0800
   ``` csharp
   public void UpdateUserEventData(JSONNode node)
   {
-      userData = new PlayerEventMoraData(node);
+      this.userData = new PlayerEventMoraData(node);
       this.hack++;
-      userData.intimacyTier = this.hack %CurrentEventSetting().eventMoraIntimaciesSettings.Count + 1;
+      this.userData.intimacyTier = this.hack %CurrentEventSetting().eventMoraIntimaciesSettings.Count + 1;
   }
   ```
 
