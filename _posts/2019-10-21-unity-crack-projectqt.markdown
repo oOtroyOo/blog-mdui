@@ -6,26 +6,26 @@ categories: Unity
 tags: 
 img: https://i.loli.net/2019/10/22/zPVqNFsTH64gSWb.png
 author: oOtroyOo
-lastupdate : 2019-10-23 22:00:00 +0800
+lastupdate : 2019-11-24 00:00:00 +0800
 ---
 # 说明文档
-
-
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
+- 适配 Ver 4.0
 - 如果打不开下载链接，请长按/右键 - 新标签打开/新窗口打开
 - 首次安装需要卸载原版App
 - 首次语言选择会退出一次App
 - 如果官方更新了App，就得重新破解，如果只是更新资源是没问题的
 - 会不会封号？ 我也不知道~~
+##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
+##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
+##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
+##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
+##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
+##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
+
  
 ---
 
-# 运行环境
+# 工程运行环境
 
 ## 游戏结构
 - 必须是 Unity 引擎，Mono打包的方式才可以使用此教程破解，即安装包或文件目录有`Assembly-CSharp.dll`。
@@ -47,7 +47,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
 # 开始工作
 
 ## 准备安装包
-本片教程安装包为v3.0第一版。
+- 本片教程安装包为v3.0， 文字补充v4.0
 - 右键用好压打开
    解压`assets\bin\Data\Managed`
   
@@ -240,7 +240,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
   ```
 
   ## 开启所有人物的事件相簿按钮
-（目前仅有Erika有这个按钮，其他角色都为灰色）
+目前仅有Erica(女仆)、Clara(化学老师) 可以点击按钮，其他角色都为灰色
 - `PetDetailPage_v2`
   ``` csharp
   UILabel label = this.btnL.transform.FindHiddenComponent(new string[]
@@ -307,7 +307,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
   }
   ```
   ## 解锁活动CG 
-  （目前仅有Erika有这个CG，其他角色都没）
+  目前仅有Erica(女仆)、Clara(化学老师) 有活动CG页，其他角色都没
  - `EventRewardPopup`
   ``` csharp
   this.scenesLockBlock[num].SetActive(EventManager.CurrentEventLevel() < levelSetting[i].level);        
@@ -339,6 +339,7 @@ lastupdate : 2019-10-23 22:00:00 +0800
   }
   ``` 
 ## 收集册
+目前仅有Erica(女仆)、Clara(化学老师) 可以查看活动CG，其他角色都没
 - `AlbumPage`
 ``` csharp
   catch (Exception)
@@ -418,13 +419,33 @@ lastupdate : 2019-10-23 22:00:00 +0800
 
 ```
 
+## v4.0
+
+## Clara (化学老师)活动，可切换造型
+
+- `EventMoraManager`
+  - 添加成员
+  ``` csharp
+    int hack =0;
+  ``` 
+
+  ``` csharp
+  public void UpdateUserEventData(JSONNode node)
+  {
+      userData = new PlayerEventMoraData(node);
+      this.hack++;
+      userData.intimacyTier = this.hack %CurrentEventSetting().eventMoraIntimaciesSettings.Count + 1;
+  }
+  ```
+
+
 # 附加修改
-- **以下修改有敏感内容，未加入安装包中**
+- **以下修改有敏感内容，未加入安装包中，自己去破解**
 
 ## 攻击力
 
-    - 仅限我方在左侧有效 ，即所有关卡均有效
-    - pvp可用，但是胜负仍然无法控制
+    - 当我方在左侧时，所有关卡有效
+    - pvp可用，但是胜负没法改 所以毫无意义
   
 - `Pet`
   
