@@ -147,21 +147,10 @@ lastupdate : 2019-11-24 00:00:00 +0800
   （此修改可能会使下次反编出现较大差异）
 
   ``` csharp
-    }
-    this.ConditionGrid.Reposition();
-    this.unlockedContent.SetActive(false);
-    this.lockedContent.SetActive(true);
-    this.completedContent.SetActive(false);
-  }
-
-
-  >>>
-    }
-    this.ConditionGrid.Reposition();
-    this.unlockedContent.SetActive(false);
-    this.lockedContent.SetActive(true);
-    this.completedContent.SetActive(false);
-    
+  public void importCompanionData(CompanionSetting companionSetting, bool displayUnlock, CompanionBossListPage companionBossListPage)
+  {
+    .............
+    ///在末尾添加
     Transform vid = unlockedContent.transform.Find("VideoBtn");
     if (vid != null)
     {
@@ -422,13 +411,14 @@ lastupdate : 2019-11-24 00:00:00 +0800
 # 附加修改
 - **以下修改有敏感内容，未加入安装包中，自己去破解**
 
-## 攻击力
+## 战斗修改
+  - 当我方在左侧时，所有关卡有效
+  - 不确定是否能在竞技场使用，胜负并不能控制
+  - 竞技场回放不正确（emmm。。）
 
-    - 当我方在左侧时，所有关卡有效
-    - pvp可用，但是胜负没法改 所以毫无意义
+### 无限攻击力
   
-- `Pet`
-  
+- `Pet`  
 
 ``` csharp
   public float GetAttack(bool withBuff = true, BlockType targetType = BlockType.ANY_COLOR)
@@ -442,3 +432,33 @@ lastupdate : 2019-11-24 00:00:00 +0800
     {
 
 ```
+
+
+### 无限生命
+  
+- `BattleMode`  
+
+``` csharp
+  public virtual int SetPlayerHP(int hp, bool couldOver)
+  {
+    int playerHPMax = this.GetPlayerHPMax(true);
++   hp = playerHPMax;
+    if (hp < 0)
+    {
+      hp = 0;
+
+```
+
+## VIP等级
+
+**这只能看看，点击任何会员功能的话，是会提示错误的** 
+
+- `PlayerData`
+  
+  ``` csharp
+  public virtual void SetPlayerInfo(JSONNode dataNode)
+  ..........
+  this.progressionLevel = 13; // vip1 = 2 , vip12 = 13
+  ..........
+  ```
+
