@@ -7,6 +7,9 @@ layout: compress
     <body>
         {% include component/totop.html %}
         {% include header/header.html %}
+        {% if site.data.site.ads %}        
+            {% include component/ads.html %}
+        {% endif %}
         <div class="mdui-container container">
             <section class="content">
                 {{ content }}
@@ -19,7 +22,7 @@ layout: compress
         {% include submission/baidu.html %}
         {% endif %}
         {% include component/sw.html %}
-        {% include component/customCssJS.html %}
+        {% include component/customCssJS.html %}    
         {% include footer/footer.html %}
         {% if site.data.site.uiux.meng == true%}
             {% if site.data.meng.live2d.switch == true %}
@@ -45,6 +48,6 @@ layout: compress
             {% elsif  site.data.meng.music_player.player == "aplayer"%}
                 {% include meng/aplayer.html %}
             {% endif %}
-        {% endif %}
+        {% endif %}      
     </body>
 </html>
