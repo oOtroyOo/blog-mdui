@@ -35,10 +35,6 @@
     <noscript><link rel="stylesheet" href="https://cdn.bootcss.com/mdui/0.3.0/css/mdui.min.css"></noscript>
     <noscript><link rel="stylesheet" href="{{ "/assets/css/global.css" | prepend: site.baseurl }}"></noscript>
 
-    {% if site.data.site.ads %}
-        {% include component/ads.html %}
-    {% endif %}
-
     {% include component/nprogress.html %}
     <script>
 var defaultTitle = document.title;

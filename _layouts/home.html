@@ -14,7 +14,9 @@ layout: default
         {% endif %}
     {% endif %}
     {% endif %}
-
+    {% if site.data.site.ads %}        
+    {% include component/ads.html %}
+    {% endif %}
     {% include content/paginator_post_list.html %}
     {% include content/paginator_button.html %}
 </div>

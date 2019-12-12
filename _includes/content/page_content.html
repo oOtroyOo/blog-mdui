@@ -78,6 +78,9 @@
                 </div>
                 {% include content/component/readtime.html %}
                 {% include content/component/lastupdate.html %}
+                {% if site.data.site.ads %}        
+                {% include component/ads.html %}
+                {% endif %}
                 <div class="mdui-card-content mdui-typo">
                     {{ content }}
                 </div>
