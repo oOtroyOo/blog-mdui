@@ -83,6 +83,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 - 准备好签名文件
     - 如果你有准备好的签名文件，请使用适合你准备好的签名命令
     - 如果你从前文下载的签名，执行以下命令 （自己看清楚文件名）
+
 ``` bash
   java -jar "signapk.jar" testkey.x509.pem testkey.pk8 project-qt_268.apk project-qt_268_sign.apk
 ```
@@ -93,6 +94,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ## 开启伴侣动画
 - `UserCompanionRecord`
   - 新增构造方法
+  
 ``` csharp
   //此处更改需要及时保存模块，下文有一条更改会引用这里
   public UserCompanionRecord(string id)
@@ -106,12 +108,15 @@ lastupdate : 2019-11-24 00:00:00 +0800
   }
 ```
   - 修改`UserCompanionRecord(JSONNode json)`和`Update(JSONNode json)`2处Dictionary-Value分配
+  
 ``` csharp
   Dictionary<string, int> value = keyValuePair.Value.JSONDict.ToDictionary((KeyValuePair<string, JSONNode> kvp) => kvp.Key, (KeyValuePair<string, JSONNode> kvp) => kvp.Value.AsInt);
   》》》
    Dictionary<string, int> value = keyValuePair.Value.JSONDict.ToDictionary((KeyValuePair<string, JSONNode> kvp) => kvp.Key, (KeyValuePair<string, JSONNode> kvp) => 1);
 ```
 - `EpisodeMainPage`
+
+
 ``` csharp
   private void SetupAnimationElement(string companionId)
 
@@ -134,6 +139,8 @@ lastupdate : 2019-11-24 00:00:00 +0800
   }
 ```
 - `CompanionSettingHelper`
+
+
 ``` csharp
   public static CompanionAnimationSetting.AnimationStatus GetEpisodeAnimationStatus(string companionId, int episodeId, int subEpisodeId)
 
@@ -161,6 +168,8 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ```
   ## 切换语言
 - `Localization`
+
+
 ``` csharp
   private static string Get(Localization.Language pack, string key)
   {
@@ -198,7 +207,6 @@ lastupdate : 2019-11-24 00:00:00 +0800
 （此修改可能会使下次反编出现较大差异）
 
 ``` csharp
-
   public IEnumerator CheckSystem()
   {
 +   Config.LangAbleChange = true;
@@ -212,6 +220,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ```
 
 //因为不明原因，首次选择中文，会造成无限下载资源，暂时没有找到完美的解决方法。此处修改即强制退出App
+
 ``` csharp
     if (!string.IsNullOrEmpty(Config.Language))
     {
@@ -232,6 +241,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
   ## 开启所有人物的事件相簿按钮
 目前仅有Erica(女仆)、Clara(化学老师) 可以点击按钮，其他角色都为灰色
 - `PetDetailPage_v2`
+
 ``` csharp
   UILabel label = this.btnL.transform.FindHiddenComponent(new string[]
   {
@@ -275,6 +285,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
   ## 解锁人物5星卡片
 
 - `PetDetailPage_v2`
+
 ``` csharp
   btn_cardView.gameObject.SetActive(****)
   》》》全部更改为 
@@ -282,6 +293,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ```
 
 - `PetDetailFullViewButton`
+
 ``` csharp
   for (int i = 0; i < this.button.Length; i++)
   {
@@ -302,12 +314,14 @@ lastupdate : 2019-11-24 00:00:00 +0800
   ## 解锁活动CG 
   目前仅有Erica(女仆)、Clara(化学老师) 有活动CG页，其他角色都没
  - `EventRewardPopup`
+
 ``` csharp
   this.scenesLockBlock[num].SetActive(EventManager.CurrentEventLevel() < levelSetting[i].level);        
   >>>
   this.scenesLockBlock[num].SetActive(false);
 ```
 - `EventAlbumPage`
+
 ``` csharp
   private bool FindCgId(CharacterBaseInfo_v2 serialData, string cgId)
   {
@@ -331,9 +345,11 @@ lastupdate : 2019-11-24 00:00:00 +0800
     return true;
   }
 ``` 
+
 ## 收集册
 目前仅有Erica(女仆)、Clara(化学老师) 可以查看活动CG，其他角色都没
 - `AlbumPage`
+
 ``` csharp
   catch (Exception)
   {
@@ -394,6 +410,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 
 - `EventMoraManager`
   - 添加成员
+
 ``` csharp
     int hack =0;
 ``` 
