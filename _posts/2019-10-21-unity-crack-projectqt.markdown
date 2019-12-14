@@ -83,9 +83,9 @@ lastupdate : 2019-11-24 00:00:00 +0800
 - 准备好签名文件
     - 如果你有准备好的签名文件，请使用适合你准备好的签名命令
     - 如果你从前文下载的签名，执行以下命令 （自己看清楚文件名）
-  ``` bash
+``` bash
   java -jar "signapk.jar" testkey.x509.pem testkey.pk8 project-qt_268.apk project-qt_268_sign.apk
-  ```
+```
 
 # 代码片段
 - 每次反编译都**可能出现代码有些许差别**，如果有区别，视情况编写
@@ -93,7 +93,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ## 开启伴侣动画
 - `UserCompanionRecord`
   - 新增构造方法
-  ``` csharp
+``` csharp
   //此处更改需要及时保存模块，下文有一条更改会引用这里
   public UserCompanionRecord(string id)
   {
@@ -104,15 +104,15 @@ lastupdate : 2019-11-24 00:00:00 +0800
     this.skillLevels = new ReactiveProperty<Dictionary<string, int>>(new Dictionary<string, int>());
     this.animationStatus = new ReactiveProperty<Dictionary<int, Dictionary<string, int>>>(new Dictionary<int, Dictionary<string, int>>());
   }
-  ```
+```
   - 修改`UserCompanionRecord(JSONNode json)`和`Update(JSONNode json)`2处Dictionary-Value分配
-  ``` csharp
+``` csharp
   Dictionary<string, int> value = keyValuePair.Value.JSONDict.ToDictionary((KeyValuePair<string, JSONNode> kvp) => kvp.Key, (KeyValuePair<string, JSONNode> kvp) => kvp.Value.AsInt);
   》》》
    Dictionary<string, int> value = keyValuePair.Value.JSONDict.ToDictionary((KeyValuePair<string, JSONNode> kvp) => kvp.Key, (KeyValuePair<string, JSONNode> kvp) => 1);
-  ```
+```
 - `EpisodeMainPage`
-  ``` csharp
+``` csharp
   private void SetupAnimationElement(string companionId)
 
   >>>
@@ -132,9 +132,9 @@ lastupdate : 2019-11-24 00:00:00 +0800
         }
     }
   }
-  ```
+```
 - `CompanionSettingHelper`
-    ``` csharp
+``` csharp
   public static CompanionAnimationSetting.AnimationStatus GetEpisodeAnimationStatus(string companionId, int episodeId, int subEpisodeId)
 
   >>>
@@ -142,11 +142,11 @@ lastupdate : 2019-11-24 00:00:00 +0800
   {
       return CompanionAnimationSetting.AnimationStatus.Collected;  
   }
-  ```
+```
 - `CompanionBanner`
   （此修改可能会使下次反编出现较大差异）
 
-  ``` csharp
+``` csharp
   public void importCompanionData(CompanionSetting companionSetting, bool displayUnlock, CompanionBossListPage companionBossListPage)
   {
     .............
@@ -158,10 +158,10 @@ lastupdate : 2019-11-24 00:00:00 +0800
     }
   }
 
-  ```
+```
   ## 切换语言
 - `Localization`
-  ``` csharp
+``` csharp
   private static string Get(Localization.Language pack, string key)
   {
     key = key.Trim();
@@ -193,7 +193,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
     }    
     return result;
   }
-  ```
+```
 - `LoginManager`
 （此修改可能会使下次反编出现较大差异）
 
@@ -212,7 +212,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ```
 
 //因为不明原因，首次选择中文，会造成无限下载资源，暂时没有找到完美的解决方法。此处修改即强制退出App
-  ``` csharp
+``` csharp
     if (!string.IsNullOrEmpty(Config.Language))
     {
       this.StartCoroutine(this.CheckDownload());
@@ -226,13 +226,13 @@ lastupdate : 2019-11-24 00:00:00 +0800
   》》》
     UnityEngine.Application.Quit();
   });
-  ```
+```
 
 
   ## 开启所有人物的事件相簿按钮
 目前仅有Erica(女仆)、Clara(化学老师) 可以点击按钮，其他角色都为灰色
 - `PetDetailPage_v2`
-  ``` csharp
+``` csharp
   UILabel label = this.btnL.transform.FindHiddenComponent(new string[]
   {
     "Label"
@@ -270,19 +270,19 @@ lastupdate : 2019-11-24 00:00:00 +0800
       this.eventAlbum.Load(this.myPet);
     }
   }
-  ```
+```
 
   ## 解锁人物5星卡片
 
 - `PetDetailPage_v2`
-    ``` csharp
+``` csharp
   btn_cardView.gameObject.SetActive(****)
   》》》全部更改为 
   btn_cardView.gameObject.SetActive(true)
-  ```
+```
 
 - `PetDetailFullViewButton`
-  ``` csharp
+``` csharp
   for (int i = 0; i < this.button.Length; i++)
   {
     bool flag = i > star;
@@ -298,17 +298,17 @@ lastupdate : 2019-11-24 00:00:00 +0800
     this.button[i].normalSprite = "Common Button_Square_Big2";
     this.lockSprite[i].gameObject.SetActive(flag);
   }
-  ```
+```
   ## 解锁活动CG 
   目前仅有Erica(女仆)、Clara(化学老师) 有活动CG页，其他角色都没
  - `EventRewardPopup`
-  ``` csharp
+``` csharp
   this.scenesLockBlock[num].SetActive(EventManager.CurrentEventLevel() < levelSetting[i].level);        
   >>>
   this.scenesLockBlock[num].SetActive(false);
-  ```
+```
 - `EventAlbumPage`
-  ``` csharp
+``` csharp
   private bool FindCgId(CharacterBaseInfo_v2 serialData, string cgId)
   {
     if (serialData == null || serialData.cgArray == null)
@@ -330,7 +330,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
   {
     return true;
   }
-  ``` 
+``` 
 ## 收集册
 目前仅有Erica(女仆)、Clara(化学老师) 可以查看活动CG，其他角色都没
 - `AlbumPage`
@@ -394,18 +394,18 @@ lastupdate : 2019-11-24 00:00:00 +0800
 
 - `EventMoraManager`
   - 添加成员
-  ``` csharp
+``` csharp
     int hack =0;
-  ``` 
+``` 
 
-  ``` csharp
+``` csharp
   public void UpdateUserEventData(JSONNode node)
   {
       this.userData = new PlayerEventMoraData(node);
       this.hack++;
       this.userData.intimacyTier = this.hack %CurrentEventSetting().eventMoraIntimaciesSettings.Count + 1;
   }
-  ```
+```
 
 
 # 附加修改
@@ -451,14 +451,14 @@ lastupdate : 2019-11-24 00:00:00 +0800
 
 ## VIP等级
 
-**这只能看看，点击任何会员功能的话，是会提示错误的** 
+**这只能看着好玩，如果想点击任何会员功能的话，是会提示错误的** 
 
 - `PlayerData`
   
-  ``` csharp
+``` csharp
   public virtual void SetPlayerInfo(JSONNode dataNode)
   ..........
   this.progressionLevel = 13; // vip1 = 2 , vip12 = 13
   ..........
-  ```
+```
 
