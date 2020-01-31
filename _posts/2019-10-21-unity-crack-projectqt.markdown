@@ -166,7 +166,8 @@ lastupdate : 2019-11-24 00:00:00 +0800
   }
 
 ```
-  ## 切换语言
+
+## 切换语言
 - `Localization`
 
 
@@ -238,8 +239,8 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ```
 
 
-  ## 开启所有人物的事件相簿按钮
-目前仅有Erica(女仆)、Clara(化学老师) 可以点击按钮，其他角色都为灰色
+## 开启所有人物的事件相簿按钮
+目前仅有Erica(双枪女仆)、Clara(化学老师) 可以点击按钮，其他角色都为灰色
 - `PetDetailPage_v2`
 
 ``` csharp
@@ -282,7 +283,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
   }
 ```
 
-  ## 解锁人物5星卡片
+## 解锁人物5星卡片
 
 - `PetDetailPage_v2`
 
@@ -311,8 +312,8 @@ lastupdate : 2019-11-24 00:00:00 +0800
     this.lockSprite[i].gameObject.SetActive(flag);
   }
 ```
-  ## 解锁活动CG 
-  目前仅有Erica(女仆)、Clara(化学老师) 有活动CG页，其他角色都没
+## 解锁活动CG 
+  目前仅有Erica(双枪女仆)、Clara(化学老师) 有活动CG页，其他角色都没
  - `EventRewardPopup`
 
 ``` csharp
@@ -347,7 +348,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ``` 
 
 ## 收集册
-目前仅有Erica(女仆)、Clara(化学老师) 可以查看活动CG，其他角色都没
+目前仅有Erica(双枪女仆)、Clara(化学老师) 可以查看活动CG，其他角色都没
 - `AlbumPage`
 
 ``` csharp
@@ -409,8 +410,8 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ## Clara (化学老师)活动，可切换造型
 
 - `EventMoraManager`
-  - 添加成员
 
+   添加成员：
 ``` csharp
     int hack =0;
 ``` 
@@ -426,14 +427,14 @@ lastupdate : 2019-11-24 00:00:00 +0800
 
 
 # 附加修改
-- **以下修改有敏感内容，未加入安装包中，自己去破解**
+**以下修改有敏感内容，未加入安装包中，自己去破解**
 
 ## 战斗修改
   - 当我方在左侧时，所有关卡有效
   - 不确定是否能在竞技场使用，胜负并不能控制
   - 竞技场回放不正确（emmm。。）
 
-### 无限攻击力
+## 无限攻击力
   
 - `Pet`  
 
@@ -451,7 +452,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ```
 
 
-### 无限生命
+## 无限生命
   
 - `BattleMode`  
 
@@ -463,6 +464,30 @@ lastupdate : 2019-11-24 00:00:00 +0800
     if (hp < 0)
     {
       hp = 0;
+
+```
+
+
+## 同色砖块
+  全场的颜色砖块，都将刷新为队长相同的属性
+  ![Screenshot_20200131-181836-](https://i.loli.net/2020/01/31/Z2kHF6esOfRzTXn.jpg)
+- `CoreGameSystem`
+
+``` csharp
+  protected virtual Block pushNewItem(int r, int x, bool checkEmpty = true)
+  {
+    if (r < 0 || r >= this._blocksPrefab.Length)
+    {
+        r = 0;
+    }
+ +  if (r < (int)BlockType.COLOR_DARK)
+ +  {
+ +      r = (int)this._playerPets[0].GetProperty(true);
+ +      r--;
+ +  }
+    GameObject gameObject = null;
+
+    .................
 
 ```
 
@@ -478,4 +503,3 @@ lastupdate : 2019-11-24 00:00:00 +0800
   this.progressionLevel = 13; // vip1 = 2 , vip12 = 13
   ..........
 ```
-
