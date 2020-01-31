@@ -1,6 +1,6 @@
 source "https://gems.ruby-china.com/"
 ruby RUBY_VERSION
-
+gem "jekyll"
 gem 'jekyll-theme-mdui'
 
 group :jekyll_plugins do

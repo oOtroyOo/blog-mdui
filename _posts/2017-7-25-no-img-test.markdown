@@ -33,7 +33,7 @@ author: kejun
 
 ## 预览
 
-[demo](https://blog.kejun.space/pages/editor.html)
+[demo](https://blog.kejun.me/pages/editor.html)
 
 ![](https://ooo.0o0.ooo/2017/05/30/592d4280948fb.jpg)
 
