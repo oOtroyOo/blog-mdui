@@ -469,8 +469,9 @@ lastupdate : 2019-11-24 00:00:00 +0800
 
 
 ## 同色砖块
+
   全场的颜色砖块，都将刷新为队长相同的属性
-  ![Screenshot_20200131-181836-](https://i.loli.net/2020/01/31/Z2kHF6esOfRzTXn.jpg)
+  
 - `CoreGameSystem`
 
 ``` csharp
