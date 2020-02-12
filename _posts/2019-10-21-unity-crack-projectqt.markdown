@@ -47,7 +47,7 @@ lastupdate : 2019-11-24 00:00:00 +0800
 # 开始工作
 
 ## 准备安装包
-- 本片教程安装包为v3.0， 文字补充v4.0
+- 本片教程安装包为v3.0， 文字补充v4.0~v5.0
 - 右键用好压打开
    解压`assets\bin\Data\Managed`
   
@@ -63,9 +63,10 @@ lastupdate : 2019-11-24 00:00:00 +0800
 
 ## 反编代码
    这一节为简介，稍后列出详细的代码段
+- 使用dnSpy打开`Assembly-CSharp.dll`
 - 从拿到的代码中，找到所需要的代码
 - 每次反编译或者重新编译，**可能出现代码有些许差别**，视情况进行编写
-- 右键 编辑方法(C#) 或 编辑类(C#)
+- 右键 编辑方法(C#)、编辑类(C#)、添加类(C#)、添加类成员(C#)
   ![批注 2019-10-22 231556](https://i.loli.net/2019/10/22/zPVqNFsTH64gSWb.png)
 - 修改完毕之后 编译
   ![批注 2019-10-22 231738](https://i.loli.net/2019/10/22/GPcraJjAfi4uFgK.png)
@@ -400,21 +401,17 @@ lastupdate : 2019-11-24 00:00:00 +0800
     this.scrollModule.SetDataList(list, false, 0);
     this.numLabel.text = this.unlockNum + "/" + this.totalNum;
   }
-
-
-
 ```
-
-## v4.0
 
 ## Clara (化学老师)活动，可切换造型
 
 - `EventMoraManager`
 
-   添加成员：
+添加成员： 
+
 ``` csharp
-    int hack =0;
-``` 
+  int hack =0;
+```
 
 ``` csharp
   public void UpdateUserEventData(JSONNode node)
@@ -425,14 +422,35 @@ lastupdate : 2019-11-24 00:00:00 +0800
   }
 ```
 
+<p></p>
 
 # 附加修改
-**以下修改有敏感内容，未加入安装包中，自己去破解**
+**以下修改有不平衡内容，未加入安装包中，自己去破解**
 
-## 战斗修改
-  - 当我方在左侧时，所有关卡有效
-  - 不确定是否能在竞技场使用，胜负并不能控制
-  - 竞技场回放不正确（emmm。。）
+- 关于战斗的修改
+  - 可用于剧情关卡
+  - 可用于打塔
+  - 可用于活动关卡
+  - pvp竞技场不建议使用。使用会出现奇怪的问题，胜负并不能控制，回放不正确等等
+  
+## 新增功能菜单类 
+(新增内容需要及时保存模块)
+
+- `HackMgr` 
+
+``` csharp
+{% include code/project-qt/HackMgr.cs %}
+```
+
+- 需要找一个地方启用脚本。
+  可以写在`LoginManager`
+
+``` csharp
+	private void Awake()
+	{
++	    HackMgr.GetInstance();
+```
+
 
 ## 无限攻击力
   
@@ -441,10 +459,10 @@ lastupdate : 2019-11-24 00:00:00 +0800
 ``` csharp
   public float GetAttack(bool withBuff = true, BlockType targetType = BlockType.ANY_COLOR)
   {
-+   if (!this.IsEnemy)
-+   {
-+      return 9999;
-+   }
++    if (HackMgr.AtkActive && !this.IsEnemy)
++	  {
++	      return (float)HackMgr.AtkValue;
++	  }
     float num = this.GetAbility(withBuff, null).atk;
     if (this.core != null)
     {
@@ -460,13 +478,36 @@ lastupdate : 2019-11-24 00:00:00 +0800
   public virtual int SetPlayerHP(int hp, bool couldOver)
   {
     int playerHPMax = this.GetPlayerHPMax(true);
-+   hp = playerHPMax;
++    if (HackMgr.HpActive)
++    {
++        hp = playerHPMax;
++    }
     if (hp < 0)
     {
       hp = 0;
 
 ```
 
+``` csharp
+  //这一条的意思是让敌人造成的伤害为0。
+  //如果仅靠自身生命不减，貌似v5.0在打塔结束计算的时候他仍然会计算失败。
+  //尚不清楚有什么不良影响
+  protected DamageContainer calculateFinalDamage(CurrentRoundAttack currentRoundAttack, Pet targetPet, Pet sender)
+  {
+///////////
++          if (HackMgr.HpActive || HackMgr.GameClear)
++          {
++              if (sender.IsEnemy && targetPet.IsPlayer)
++              {
++                  num = 0;
++                  num2 = 0;
++              }
++          }
+          return new DamageContainer((float)Mathf.FloorToInt(num), flag2, num3, flag3, num4, num2);
+      }
+      return DamageContainer.Empty();
+  }
+```
 
 ## 同色砖块
 
@@ -481,14 +522,17 @@ lastupdate : 2019-11-24 00:00:00 +0800
     {
         r = 0;
     }
- +  if (r < (int)BlockType.COLOR_DARK)
- +  {
- +      r = (int)this._playerPets[0].GetProperty(true);
- +      r--;
- +  }
++    if (HackMgr.BrickActive)
++    {
++        if (r < (int)BlockType.COLOR_DARK)
++        {
++            r = (int)this._playerPets[0].GetProperty(true);
++            r--;
++        }
++    }
     GameObject gameObject = null;
 
-    .................
+    /////////
 
 ```
 
@@ -500,7 +544,88 @@ lastupdate : 2019-11-24 00:00:00 +0800
   
 ``` csharp
   public virtual void SetPlayerInfo(JSONNode dataNode)
-  ..........
-  this.progressionLevel = 13; // vip1 = 2 , vip12 = 13
-  ..........
+    /////////
+
+    this.progressionLevel = dataNode["progression_lv"].AsInt;
+    >>>>>
+    if (HackMgr.VipLevelActive)
+    {
+        this.progressionLevel = HackMgr.VipLevel + 1;
+    }
+    /////////
+```
+
+## 立即通关
+
+- `BattleMode`
+
+``` csharp
+  public virtual bool IsAllWaveClear()
+  {
++      if (HackMgr.GameClear)
++      {
++          return true;
++      }
+      return this.wave > this.waveTotal;
+  }
+```
+
+- `CoreGameSystem`
+
+
+
+``` csharp
+  //新增方法  （请及时保存模块）
+  IEnumerator HackGameClear()
+  {
+      yield return new WaitForSeconds(0.5f);
+      if (_gameEnd)
+      {
+          yield return StartCoroutine(GameClear(true));
+      }
+  }
+```
+
+``` csharp
+  protected virtual IEnumerator Start()
+
+////最后
+    if (HackMgr.GameClear)
+    {
+        StartCoroutine(HackGameClear());
+    }
+    yield break;
+  }
+```
+
+``` csharp
+  public bool isAllEnemyDead(bool checkAgain = false)
+  {
++      if (HackMgr.GameClear)
++      {
++          return true;
++      }
+      if (this.reviving)
+      {
+          return false;
+      }
+   /////////
+```
+
+``` csharp
+  protected virtual void battleEnd(Action<JSONNode> callback, string cause = "")
+  /////////
+    if (this.pauseQuit)
+    {
+        flag2 = false;
+    }
++    else if (HackMgr.GameClear)
++    {
++        flag2 = true;
++    }
+    else if (this.IsPVPTower)
+    {
+        flag2 = (this.modePVPTower.GetPlayerHP(false) > 0 && this.modePVPTower.GetPlayerHP(false) > this.modePVPTower.GetEnemyHP() && !this.currentMode.IsOverRoundLimit());
+    }
+  /////////
 ```
