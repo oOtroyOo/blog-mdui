@@ -229,26 +229,5 @@ public class HackMgr : MonoBehaviour
         rect.width = rect.height;
         GUI.DrawTexture(rect, value ? onTex : normalTex, ScaleMode.ScaleAndCrop);
         return value;
-    }
-    //工具方法。缩放图片大小
-    public static Texture2D ScaleTex(Texture2D texorg, float scale)
-    {
-        Texture2D tex = new Texture2D(texorg.width, texorg.height, texorg.format, false);
-        Graphics.CopyTexture(texorg, tex);
-        tex.wrapMode = TextureWrapMode.Clamp;
-        Texture2D newTex = new Texture2D((int)(tex.width * scale), (int)(tex.height * scale));
-        for (int x = 0; x < newTex.width; x++)
-        {
-            for (int y = 0; y < newTex.height; y++)
-            {
-                Color c = tex.GetPixelBilinear(x * 1f / (newTex.width), y * 1f / (newTex.height));
-                newTex.SetPixel(x, y, c);
-            }
-        }
-
-        newTex.wrapMode = TextureWrapMode.Clamp;
-        newTex.Apply();
-        GameObject.Destroy(tex);
-        return newTex;
-    }
+    }  
 }
