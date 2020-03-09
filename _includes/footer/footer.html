@@ -18,9 +18,9 @@
                         <div>
                             Copyright ©<script>var fd=new Date;document.write("&nbsp;"+fd.getFullYear()+"&nbsp;")</script> {{site.title}}&nbsp;&nbsp;{{site.description}}
                         </div>
-                        {{ if site.beian != null && site.beian != "" }}
-                        <a id="beian" class="mdui-text-color-grey-100 mdui-ripple mdui-ripple-indigo-accent" href="http://beian.miit.gov.cn/publish/query/indexFirst.action" target="_blank"> 
-                            {{site.beian}}
+                        {{ if site.data.site.beian != null && site.data.site.beian  != "" }}
+                        <a id="beian" class="mdui-text-color-grey-400 mdui-ripple mdui-ripple-indigo-accent" href="http://beian.miit.gov.cn/publish/query/indexFirst.action" target="_blank"> 
+                            {{ site.data.site.beian }}
                          </a>
                          <script>
                         
