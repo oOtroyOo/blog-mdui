@@ -23,3 +23,5 @@ exclude:
   - README.md
   - vendor
   - docs
+  - service.bat
+  - CHANGELOG.md
