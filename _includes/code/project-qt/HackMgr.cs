@@ -48,6 +48,13 @@ public class HackMgr : MonoBehaviour
         set { PlayerPrefs.SetInt("xx_viplevel", value); }
     }
 
+    //技能无CD
+    public static bool SkillCD
+    {
+        get { return PlayerPrefs.GetInt("xx_skillcd_active", 0) == 1; }
+        set { PlayerPrefs.SetInt("xx_skillcd_active", value ? 1 : 0); }
+    }
+
     //直接结束游戏
     public static bool GameClear
     {
@@ -119,6 +126,7 @@ public class HackMgr : MonoBehaviour
             DrawBrick();//绘制砖块修改
             DrawVIP();//绘制会员修改
             DrawGameClear();//绘制直接通关
+            DrawSkillCD();
 
             GUILayout.EndVertical();
 
@@ -188,7 +196,16 @@ public class HackMgr : MonoBehaviour
         BrickActive = DrawToggle(BrickActive, "Brick");
 
         GUILayout.EndHorizontal();
-    }
+    }    
+    /// <summary>
+    /// 绘制技能无CD
+    /// </summary>
+	void DrawSkillCD()
+	{
+		GUILayout.BeginHorizontal();
+		SkillCD = DrawToggle(SkillCD, "SkillCD");
+		GUILayout.EndHorizontal();
+	}
 
     /// <summary>
     /// 绘制会员修改
@@ -229,5 +246,26 @@ public class HackMgr : MonoBehaviour
         rect.width = rect.height;
         GUI.DrawTexture(rect, value ? onTex : normalTex, ScaleMode.ScaleAndCrop);
         return value;
-    }  
+    }
+    //工具方法。缩放图片大小
+    public static Texture2D ScaleTex(Texture2D texorg, float scale)
+    {
+        Texture2D tex = new Texture2D(texorg.width, texorg.height, texorg.format, false);
+        Graphics.CopyTexture(texorg, tex);
+        tex.wrapMode = TextureWrapMode.Clamp;
+        Texture2D newTex = new Texture2D((int)(tex.width * scale), (int)(tex.height * scale));
+        for (int x = 0; x < newTex.width; x++)
+        {
+            for (int y = 0; y < newTex.height; y++)
+            {
+                Color c = tex.GetPixelBilinear(x * 1f / (newTex.width), y * 1f / (newTex.height));
+                newTex.SetPixel(x, y, c);
+            }
+        }
+
+        newTex.wrapMode = TextureWrapMode.Clamp;
+        newTex.Apply();
+        GameObject.Destroy(tex);
+        return newTex;
+    }
 }

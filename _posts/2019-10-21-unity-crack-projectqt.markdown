@@ -6,24 +6,20 @@ categories: Unity
 tags: 
 img: https://i.loli.net/2019/10/22/zPVqNFsTH64gSWb.png
 author: oOtroyOo
-lastupdate : 2020-04-01 00:00:00 +0800
+lastupdate : 2020-05-19 00:00:00 +0800
 ---
 
 # 说明文档
-- 适配英文版 Ver 5.0
-- 繁体版敬请期待...
-- 如果打不开下载链接，请长按/右键 - 新标签打开/新窗口打开
+- 适配英文版 Ver 6.0
 - 首次安装需要卸载原版App
 - 首次语言选择会退出一次App
 - 如果官方更新了App，就得重新破解，如果只是更新资源是没问题的
 - 会不会封号？ 我也不知道~~
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-##  [安装包下载](https://github.com/oOtroyOo/blog-mdui/releases)
-
+- 这里下载的安装包，包含CG解锁，**不包含 非平衡修改**，如有需要自己添加
+- 活动限定CG动画，目前仅有Erica(双枪女仆)、Clara(化学老师)、Flora(小号手)，下文提到的也就是这几个人
+  
+##  [下载安装包(Github)](https://github.com/oOtroyOo/blog-mdui/releases)
+##  [下载安装包(Mega)](https://mega.nz/folder/imYlmADZ#yygn2yqiFlDNxg0Vnvi8Dw)
  
 ---
 <div style="font-size:30px; color:red; line-height:32px">
@@ -54,7 +50,7 @@ lastupdate : 2020-04-01 00:00:00 +0800
 # 开始工作
 
 ## 准备安装包
-- 本片教程安装包为v3.0， 文字补充~v5.0
+- 本片教程安装包截图为v3.0， 文字补充~v6.0
 - 右键用好压打开
    解压`assets\bin\Data\Managed`
   
@@ -71,15 +67,22 @@ lastupdate : 2020-04-01 00:00:00 +0800
 ## 反编代码
    这一节为简介，稍后列出详细的代码段
 - 使用dnSpy打开`Assembly-CSharp.dll`
-- 从拿到的代码中，找到所需要的代码
+- 找到所需要的代码
 - 每次反编译或者重新编译，**可能出现代码有些许差别**，视情况进行编写
 - 右键 编辑方法(C#)、编辑类(C#)、添加类(C#)、添加类成员(C#)
+  
   ![批注 2019-10-22 231556](https://i.loli.net/2019/10/22/zPVqNFsTH64gSWb.png)
+
 - 修改完毕之后 编译
+  
   ![批注 2019-10-22 231738](https://i.loli.net/2019/10/22/GPcraJjAfi4uFgK.png)
+
 - 保存dll模块
+
   ![批注 2019-10-22 231821](https://i.loli.net/2019/10/22/pqV4iCJWAhek2Gu.png)
 
+- 如果出现大量报错，尝试保存-关闭-再打开
+  
 ## 重新打包
 - 用好压打开 apk
 - 删除 `META-INF`
@@ -221,7 +224,7 @@ lastupdate : 2020-04-01 00:00:00 +0800
   }
 ```
 - `LoginManager`
-（此修改可能会使下次反编出现较大差异）
+（此修改可能会使下次反编出现较大差异，请一次修改完成）
 
 ``` csharp
   public IEnumerator CheckSystem()
@@ -233,30 +236,21 @@ lastupdate : 2020-04-01 00:00:00 +0800
     {
       this.checkingMessage.gameObject.SetActive(true);
     }
-    
-```
-
+//省略部分内容
+//////////////
 //因为不明原因，首次选择中文，会造成无限下载资源，暂时没有找到完美的解决方法。此处修改即强制退出App
 
-``` csharp
-    if (!string.IsNullOrEmpty(Config.Language))
-    {
-      this.StartCoroutine(this.CheckDownload());
-    }
-    else
-    {
-      this.StartCoroutine(this.CheckSystem());
-    }
-  });
-  
-  》》》
-    UnityEngine.Application.Quit();
-  });
+    Config.CurrentSetting[ConfigKey.kLanguage] = new JSONData(lang);
+    Config.saveCurrentSetting();
+    Config.Language = lang;
+    Localization.language = lang;
++    UnityEngine.Application.Quit();
+
 ```
 
 
 ## 开启所有人物的事件相簿按钮
-目前仅有Erica(双枪女仆)、Clara(化学老师) 可以点击按钮，其他角色都为灰色
+仅有开发活动限定CG的角色 可以点击按钮，其他角色都为灰色
 - `PetDetailPage_v2`
 
 ``` csharp
@@ -312,24 +306,16 @@ lastupdate : 2020-04-01 00:00:00 +0800
 - `PetDetailFullViewButton`
 
 ``` csharp
-  for (int i = 0; i < this.button.Length; i++)
-  {
+
     bool flag = i > star;
-    this.button[i].isEnabled = !flag;
-    this.button[i].normalSprite = "Common Button_Square_Big2";
-    this.lockSprite[i].gameObject.SetActive(flag);
-  }
+
   >>>
-  for (int i = 0; i < this.button.Length; i++)
-  {
+
     bool flag = false;
-    this.button[i].isEnabled = !flag;
-    this.button[i].normalSprite = "Common Button_Square_Big2";
-    this.lockSprite[i].gameObject.SetActive(flag);
-  }
+
 ```
 ## 解锁活动CG 
-  目前仅有Erica(双枪女仆)、Clara(化学老师) 有活动CG页，其他角色都没
+  目前仅有部分角色有活动CG
  - `EventRewardPopup`
 
 ``` csharp
@@ -364,7 +350,6 @@ lastupdate : 2020-04-01 00:00:00 +0800
 ``` 
 
 ## 收集册
-目前仅有Erica(双枪女仆)、Clara(化学老师) 可以查看活动CG，其他角色都没
 - `AlbumPage`
 
 ``` csharp
@@ -380,42 +365,32 @@ lastupdate : 2020-04-01 00:00:00 +0800
 ```
 
 ``` csharp
-  public void OnMonstersButtonClick()
-  
-  >>>
-  
   //注 ：此处需要先修改上文 UserCompanionRecord 构造方法
   public void OnMonstersButtonClick()
-  {
-    this.mode = 1;
-    base.Title = Localization.Get("album_boss_title");
-    this.bg_loader.Unload();
-    this.bg_loader.LoadTex("/menu/album_bg2.png");
-    this.unlockNum = 0;
-    this.totalNum = 0;
-    List<object> list = new List<object>();
+  //////////
     foreach (KeyValuePair<string, CompanionSetting> keyValuePair in CompanionManager.Instance.CompanionSettings)
     {
-      object item = string.Empty;
-      this.totalNum++;
-      foreach (KeyValuePair<string, UserCompanionRecord> keyValuePair2 in CompanionManager.Instance.UserCompanions)
-      {
-        if (keyValuePair2.Value.id == keyValuePair.Value.id)
+        object item = string.Empty;
+        this.totalNum++;
+        foreach (KeyValuePair<string, UserCompanionRecord> keyValuePair2 in CompanionManager.Instance.UserCompanions)
         {
-          this.unlockNum++;
-          item = keyValuePair2.Value;
-          break;
+            if (keyValuePair2.Value.id == keyValuePair.Value.id)
+            {
+                this.unlockNum++;
+                item = keyValuePair2.Value;
+                break;
+            }
         }
-      }
-      if (item == string.Empty)
-      {
-        item = new UserCompanionRecord(keyValuePair.Value.id);
-      }
-      list.Add(item);
++    
+        if (item == string.Empty)
+        {
+          item = new UserCompanionRecord(keyValuePair.Value.id);
+        }
+ +    
+        list.Add(item);
     }
-    this.scrollModule.SetDataList(list, false, 0);
-    this.numLabel.text = this.unlockNum + "/" + this.totalNum;
-  }
+ ////////// 
+   
 ```
 
 ## Clara (化学老师)活动，可切换造型
@@ -436,10 +411,55 @@ lastupdate : 2020-04-01 00:00:00 +0800
       this.userData.intimacyTier = this.hack %CurrentEventSetting().eventMoraIntimaciesSettings.Count + 1;
   }
 ```
+## Flora(小号手)活动：WhatSex，解锁对话框
+
+- `WhatSexManager`
+  
+``` csharp
+	public bool GetSubTreadUnlock(string keyID)
+  {
+      return true;
+  }
+```
+
+- `WhatSexPage`
+  
+``` csharp
+    public void SetupMessage(WhatSexSubThreadSetting whatSexSubThreadSetting)
+    {
++        
+        List<string> user_record = WhatSexManager.Instance.whatSexUserData
+            .user_records[whatSexSubThreadSetting.event_id.ToString()]
+            [whatSexSubThreadSetting.thread_id.ToString()]
+            [whatSexSubThreadSetting.sub_thread_id.ToString()]
+            .message_record;
+        foreach (var kv in whatSexSubThreadSetting.message_json)
+        {
+            if (kv.Value.post_message.Count > 0)
+            {
+                foreach (int k in kv.Value.post_message)
+                {
+                    WhatSexMessageJson message = whatSexSubThreadSetting.message_json[k.ToString()];
+                    if (message.message_type == 2 || message.message_type == 3)
+                    {
+                        if (!user_record.Contains(kv.Key))
+                            user_record.Add(kv.Key);
+                    }
+                }
+            }
+            if (kv.Value.message_type == 2 || kv.Value.message_type == 3)
+            {
+                if (!user_record.Contains(kv.Key))
+                    user_record.Add(kv.Key);
+            }
+        }
++        
+        this.curWhatSexSubThread = whatSexSubThreadSetting;
+```
 
 <p></p>
 
-# 附加修改
+# 非平衡修改
 **以下修改有不平衡内容，未加入安装包中，自己去破解**
 
 - 关于战斗的修改
@@ -461,9 +481,9 @@ lastupdate : 2020-04-01 00:00:00 +0800
   可以写在`LoginManager`
 
 ``` csharp
-	private void Awake()
-	{
-+	    HackMgr.GetInstance();
+    private void Awake()
+    {
++        HackMgr.GetInstance();
 ```
 
 
@@ -474,10 +494,12 @@ lastupdate : 2020-04-01 00:00:00 +0800
 ``` csharp
   public float GetAttack(bool withBuff = true, BlockType targetType = BlockType.ANY_COLOR)
   {
-+    if (HackMgr.AtkActive && !this.IsEnemy)
-+	  {
-+	      return (float)HackMgr.AtkValue;
-+	  }
++
+   if (HackMgr.AtkActive && !this.IsEnemy)
+      {
+          return (float)HackMgr.AtkValue;
+      }
++    
     float num = this.GetAbility(withBuff, null).atk;
     if (this.core != null)
     {
@@ -493,10 +515,12 @@ lastupdate : 2020-04-01 00:00:00 +0800
   public virtual int SetPlayerHP(int hp, bool couldOver)
   {
     int playerHPMax = this.GetPlayerHPMax(true);
-+    if (HackMgr.HpActive)
-+    {
-+        hp = playerHPMax;
-+    }
++
+   if (HackMgr.HpActive)
+    {
+        hp = playerHPMax;
+    }
++    
     if (hp < 0)
     {
       hp = 0;
@@ -510,14 +534,16 @@ lastupdate : 2020-04-01 00:00:00 +0800
   protected DamageContainer calculateFinalDamage(CurrentRoundAttack currentRoundAttack, Pet targetPet, Pet sender)
   {
 ///////////
-+          if (HackMgr.HpActive || HackMgr.GameClear)
-+          {
-+              if (sender.IsEnemy && targetPet.IsPlayer)
-+              {
-+                  num = 0;
-+                  num2 = 0;
-+              }
-+          }
++
+         if (HackMgr.HpActive || HackMgr.GameClear)
+          {
+              if (sender.IsEnemy && targetPet.IsPlayer)
+              {
+                  num = 0;
+                  num2 = 0;
+              }
+          }
++          
           return new DamageContainer((float)Mathf.FloorToInt(num), flag2, num3, flag3, num4, num2);
       }
       return DamageContainer.Empty();
@@ -537,14 +563,16 @@ lastupdate : 2020-04-01 00:00:00 +0800
     {
         r = 0;
     }
-+    if (HackMgr.BrickActive)
-+    {
-+        if (r < (int)BlockType.COLOR_DARK)
-+        {
-+            r = (int)this._playerPets[0].GetProperty(true);
-+            r--;
-+        }
-+    }
++
+    if (HackMgr.BrickActive)
+    {
+        if (r < (int)BlockType.COLOR_DARK)
+        {
+            r = (int)this._playerPets[0].GetProperty(true);
+            r--;
+        }
+    }
++    
     GameObject gameObject = null;
 
     /////////
@@ -562,11 +590,12 @@ lastupdate : 2020-04-01 00:00:00 +0800
     /////////
 
     this.progressionLevel = dataNode["progression_lv"].AsInt;
-    >>>>>
++
     if (HackMgr.VipLevelActive)
     {
         this.progressionLevel = HackMgr.VipLevel + 1;
     }
++    
     /////////
 ```
 
@@ -577,49 +606,27 @@ lastupdate : 2020-04-01 00:00:00 +0800
 ``` csharp
   public virtual bool IsAllWaveClear()
   {
-+      if (HackMgr.GameClear)
-+      {
-+          return true;
-+      }
++
+      if (HackMgr.GameClear)
+      {
+          return true;
+      }
++      
       return this.wave > this.waveTotal;
   }
 ```
 
 - `CoreGameSystem`
 
-
-
-``` csharp
-  //新增方法  （请及时保存模块）
-  IEnumerator HackGameClear()
-  {
-      yield return new WaitForSeconds(0.5f);
-      if (_gameEnd)
-      {
-          yield return StartCoroutine(GameClear(true));
-      }
-  }
-```
-
-``` csharp
-  protected virtual IEnumerator Start()
-
-////最后
-    if (HackMgr.GameClear)
-    {
-        StartCoroutine(HackGameClear());
-    }
-    yield break;
-  }
-```
-
 ``` csharp
   public bool isAllEnemyDead(bool checkAgain = false)
   {
-+      if (HackMgr.GameClear)
-+      {
-+          return true;
-+      }
++
+      if (HackMgr.GameClear)
+      {
+          return true;
+      }
++
       if (this.reviving)
       {
           return false;
@@ -634,13 +641,47 @@ lastupdate : 2020-04-01 00:00:00 +0800
     {
         flag2 = false;
     }
-+    else if (HackMgr.GameClear)
-+    {
-+        flag2 = true;
-+    }
++
+    else if (HackMgr.GameClear)
+    {
+        flag2 = true;
+    }
++    
     else if (this.IsPVPTower)
     {
         flag2 = (this.modePVPTower.GetPlayerHP(false) > 0 && this.modePVPTower.GetPlayerHP(false) > this.modePVPTower.GetEnemyHP() && !this.currentMode.IsOverRoundLimit());
     }
   /////////
+```
+``` csharp
+	protected virtual IEnumerator StartBattle(float delay = 0f)
+	///////////////////最后
++
+    if (HackMgr.GameClear)
+    {
+        yield return StartCoroutine(GameClear(true));
+    }
++    
+    yield break;
+  }
+```
+
+## 技能无CD
+
+- `Pet`
+
+``` csharp
+    public int GetSkillCD()
+    {
++
+        if (HackMgr.SkillCD)
+        {
+            if (this.IsPlayer)
+            {
+                SetSkillCD(0);
+            }
+        }
++
+          return this.runtimeSkill.GetSkillCD();
+    }
 ```
