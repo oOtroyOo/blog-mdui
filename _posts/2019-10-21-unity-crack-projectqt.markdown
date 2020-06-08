@@ -16,7 +16,8 @@ lastupdate : 2020-05-19 00:00:00 +0800
 - 如果官方更新了App，就得重新破解，如果只是更新资源是没问题的
 - 会不会封号？ 我也不知道~~
 - 这里下载的安装包，包含CG解锁，**不包含 非平衡修改**，如有需要自己添加
-- 活动限定CG动画，目前仅有Erica(双枪女仆)、Clara(化学老师)、Flora(小号手)，下文提到的也就是这几个人
+- 活动限定CG动画，目前仅有Erica(双枪女仆)、Clara(化学老师)、Flora(小号手)、Venus(魔法学姐)
+下文提到的也就是这几个人
   
 ##  [下载安装包(Github)](https://github.com/oOtroyOo/blog-mdui/releases)
 ##  [下载安装包(Mega)](https://mega.nz/folder/imYlmADZ#yygn2yqiFlDNxg0Vnvi8Dw)
