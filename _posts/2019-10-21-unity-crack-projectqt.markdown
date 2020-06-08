@@ -314,40 +314,7 @@ lastupdate : 2020-05-19 00:00:00 +0800
     bool flag = false;
 
 ```
-## 解锁活动CG 
-  目前仅有部分角色有活动CG
- - `EventRewardPopup`
 
-``` csharp
-  this.scenesLockBlock[num].SetActive(EventManager.CurrentEventLevel() < levelSetting[i].level);        
-  >>>
-  this.scenesLockBlock[num].SetActive(false);
-```
-- `EventAlbumPage`
-
-``` csharp
-  private bool FindCgId(CharacterBaseInfo_v2 serialData, string cgId)
-  {
-    if (serialData == null || serialData.cgArray == null)
-    {
-      return false;
-    }
-    for (int i = 0; i < serialData.cgArray.Length; i++)
-    {
-      if (serialData.cgArray[i].Equals(cgId))
-      {
-        return true;
-      }
-    }
-    return false;
-  }        
-
-  >>>
-  private bool FindCgId(CharacterBaseInfo_v2 serialData, string cgId)
-  {
-    return true;
-  }
-``` 
 
 ## 收集册
 - `AlbumPage`
@@ -391,6 +358,89 @@ lastupdate : 2020-05-19 00:00:00 +0800
     }
  ////////// 
    
+```
+
+## 解锁活动CG 
+  目前仅有部分角色有活动CG
+ - `EventRewardPopup`
+
+``` csharp
+  this.scenesLockBlock[num].SetActive(EventManager.CurrentEventLevel() < levelSetting[i].level);        
+  >>>
+  this.scenesLockBlock[num].SetActive(false);
+```
+- `EventAlbumPage`
+
+``` csharp
+  private bool FindCgId(CharacterBaseInfo_v2 serialData, string cgId)
+  {
+    if (serialData == null || serialData.cgArray == null)
+    {
+      return false;
+    }
+    for (int i = 0; i < serialData.cgArray.Length; i++)
+    {
+      if (serialData.cgArray[i].Equals(cgId))
+      {
+        return true;
+      }
+    }
+    return false;
+  }        
+
+  >>>
+  private bool FindCgId(CharacterBaseInfo_v2 serialData, string cgId)
+  {
+    return true;
+  }
+``` 
+
+## 教育活动，可切换造型
+
+- EventMainPage
+
+添加成员
+``` csharp
+    private static int boosterLevel;
+
+    private void RandIntimacy()
+    {
+        boosterLevel = boosterLevel + 1;
+        if (boosterLevel > EventManager.CurrentEventSetting().intimacyLevelSetting.Count - 1)
+        {
+            boosterLevel = 1;
+        }
+        this.intimacyLevel = boosterLevel;
+        EventManager.Instance.UserEventData.boosterLevel = boosterLevel;
+    }
+```
+
+``` csharp
+  public bool SetData()
+  {
++
+      RandIntimacy();
++
+      this.eventId = EventManager.CurrentEventId();
+      if (!EventManager.Instance.EventSettings.ContainsKey(this.eventId))
+      {
+          return false;
+      }
+```
+``` csharp
+    public override void WillBeBack()
+    {
+        base.WillBeBack();
++
+        RandIntimacy();
++
+        NavBar.Instance.backButtonForcePosition = true;
+        this.startupUIMode = NavBar.NavBarMode._3HiddenAllBar;
+        if (this.petEventAnimationProxy != null)
+        {
+            this.petEventAnimationProxy.SetAnimation(this.GetAnimationName("idle", false), true);
+        }
+    }
 ```
 
 ## Clara (化学老师)活动，可切换造型
