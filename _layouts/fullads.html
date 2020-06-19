@@ -1,9 +1,5 @@
----
-layout: compress
----
 <!DOCTYPE html>
 <html lang="{{site.data.site.lang}}">
-    {% include head.html %}
     <body>
         {% include component/totop.html %}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -16,14 +12,6 @@ layout: compress
              data-full-width-responsive="true"></ins>
         <script>
              (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        {% if site.data.site.google_analytics != "" %}
-        {% include analytics/google.html %}
-        {% endif %}
-        {% if site.data.site.baidu_auto_push == true %}
-        {% include submission/baidu.html %}
-        {% endif %}
-        {% include component/sw.html %}
-        {% include component/customCssJS.html %} 
+        </script>     
     </body>
 </html>
