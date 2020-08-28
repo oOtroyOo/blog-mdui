@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Unity 使用Android原生Camera预览摄像头
-date:  17:26:28 +0800
-categories: undefined
+date:  2020-01-21 17:26:28 +0800
+categories: Unity
 tags: 
 img: 
 ---
