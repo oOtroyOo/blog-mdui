@@ -55,6 +55,9 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 
   ![Fiddler网关](https://i.loli.net/2020/08/27/hEAdnGzQSHmXFYt.jpg)
   
+  - 关闭启动充当系统代理
+  ![批注 2020-08-28 230428](https://i.loli.net/2020/08/28/3kLjKU9MzGQNm7b.jpg)
+  
   - 关闭系统的其他代理
 
   ![关闭系统代理](https://i.loli.net/2020/08/27/7clCrsWOVHPDjE9.jpg)
