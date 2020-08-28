@@ -10,6 +10,9 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 # Fiddler 安卓游戏抓包过程
 文章正在更新中。
 
+## [脚本下载](#导入脚本)
+  - v1.0
+    开启了全部角色解锁，并满星，包括8星突破
 
 ## 前言
   - 游戏联网通常有几种形式，http，socket，蓝牙连接等。
@@ -18,31 +21,53 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
   - 恰当的修改数据包的内容，就可以欺骗客户端，拿到你的假数据
   
 ## 安装与配置Fiddler
-  - 安装 
-    可以从[这里下载](http://www.dayanzai.me/fiddler.html)，注意不是用最新的 Fiddler Everywhere 。
 
-  - 设备
+### 安装 Fiddler
 
-    - 电脑一台
-    - 因为网络抓包存在不安全性，你可以用手机Wifi连接，建议用模拟器，我使用的Mumu
+  可以从[这里下载](http://www.dayanzai.me/fiddler.html)，注意不是用最新的 Fiddler Everywhere 。
+
+### 设备
+
+  - 电脑一台，最好能开Http代理
+  - 手机需要与电脑在统一局域网
+  - 可以使用Mumu模拟器，其他模拟器自行尝试
+  - **注意** 由于抓包不安全，不建议使用手机，建议用模拟器
     
-  - 基本配置
+### 基本配置
    
-    由于过程较为繁琐，建议自行搜索关于Fiddler与安卓抓包的文章 ，例如[这里](https://www.jianshu.com/p/6858a25674b4) 。
+  由于过程较为繁琐，建议自行搜索关于Fiddler与安卓抓包的文章 
+  
+  例如[这里](https://www.jianshu.com/p/6858a25674b4) 。
 
-    关键就是要设置正确局域网Wifi代理地址，下载Fiddler提供的证书
+  关键就是要设置正确局域网Wifi代理地址, 通常是 
 
-  - 代理配置
-    由于游戏可能需要VPN，如果你有电脑版的Http代理器，可以参考以下配置
+  地址：192.168.x.xx
+  端口：8888
 
-    - Fiddler 工具-选项-网关
+  根据教程下载Fiddler提供的证书
 
-    ![Fiddler网关](https://i.loli.net/2020/08/27/hEAdnGzQSHmXFYt.jpg)
-    
-    - 关闭系统代理
+### 代理配置
 
-    ![关闭系统代理](https://i.loli.net/2020/08/27/7clCrsWOVHPDjE9.jpg)
+  手机上不能开VPN，否则无效
+  由于游戏可能需要VPN，如果你有电脑版的http代理器，可以参考以下配置
 
-# 导入脚本
-  - 
+  - Fiddler 工具-选项-网关
+
+  ![Fiddler网关](https://i.loli.net/2020/08/27/hEAdnGzQSHmXFYt.jpg)
+  
+  - 关闭系统的其他代理
+
+  ![关闭系统代理](https://i.loli.net/2020/08/27/7clCrsWOVHPDjE9.jpg)
+
+### 导入脚本
+  - 下载脚本 
+    - [Github](https://github.com/oOtroyOo/blog-mdui/releases/tag/qt)
+  - 将FiddlerQT.dll , LitJson.dll 放在 `Fiddler安装目录\Scripts\`
+   （以后更新可以不下载LitJson）
+  - 重新开启Fiddler
+
+## 开始游戏
+ 应该不出意外就能破解了
+
+# 代码部分
   
