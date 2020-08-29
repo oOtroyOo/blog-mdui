@@ -52,15 +52,7 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 
 ## 代理配置
 
-  由于游戏可能需要VPN，如果不需要，则可以跳过此步骤
-
-  手机上不能开VPN，否则无效
-  
-  如果你有电脑版的http代理器，可以参考以下配置 
-   - Fiddler 工具-选项-网关
-
-  ![Fiddler网关](https://i.loli.net/2020/08/27/hEAdnGzQSHmXFYt.jpg)
-  
+  - 手机上不能开VPN，否则无效
   - 关闭启动充当系统代理
   
   ![批注 2020-08-28 230428](https://i.loli.net/2020/08/28/3kLjKU9MzGQNm7b.jpg)
@@ -68,6 +60,18 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
   - 关闭系统的其他代理
 
   ![关闭系统代理](https://i.loli.net/2020/08/27/7clCrsWOVHPDjE9.jpg)
+
+  - 由于游戏可能需要VPN 
+  
+    如果你没有电脑端Http代理，或者不需要，**请跳过此步骤** 
+    
+    如：ShadowSocks，Trojan，等工具，可以参考以下配置 **<u> 请根据你自己的地址填写</u>**  不要直接复制。
+
+    - Fiddler 工具-选项-网关 
+
+    ![Fiddler网关](https://i.loli.net/2020/08/27/hEAdnGzQSHmXFYt.jpg)
+  
+  
 
 ## 导入脚本
   - 下载脚本 
