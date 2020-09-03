@@ -11,6 +11,8 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 文章正在更新中。
 
 # [脚本下载](#导入脚本)
+  - v1.4 
+    提供修改器版的脚本
   - v1.3 
     解锁房间伴侣，适配优化
   - v1.2 
@@ -80,6 +82,7 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
     - [Github](https://github.com/oOtroyOo/blog-mdui/releases/tag/qt)
   - 将FiddlerQT.dll , LitJson.dll 放在 `Fiddler安装目录\Scripts\`
    （以后更新可以不下载LitJson）
+  - 若想使用修改器版，则更换为 FiddlerQT_Hack.dll
   - 重新开启Fiddler
 
 ## 问题排查
@@ -95,7 +98,7 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
   - 8星突破角色       
     包括 Venus，Elva 或更多
   - 推出过CG收藏角色右上角的收藏按钮可以查看      
-    包括 Erica埃里卡(双枪女仆)，Clara克拉拉(化学老师)，Amy艾米(运动兽娘)，Flora菲歐娜(小号手)，Venus(神秘学姐)，Alberta艾伯塔(女王)，Alice愛麗絲(电锯)，Elva埃爾瓦(赛博人)  
+    包括 Erica埃里卡(双枪女仆)，Clara克拉拉(化学老师)，Amy艾米(运动兽娘)，Flora菲歐娜(小号手)，Venus維納斯(神秘学姐)，Alberta艾伯塔(女皇)，Alice愛麗絲(电锯)，Elva埃爾瓦(赛博人)  
     或更多
 
 ## 调教活动/猜拳活动 玩法
