@@ -54,6 +54,10 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
   Mumu模拟器是在设置里，长按那个Wifi连接就可以填代理  
   根据教程下载Fiddler提供的证书
 
+  - 点亮菜单上的“解码”按钮
+
+  ![批注 2020-09-05 025853](https://i.loli.net/2020/09/05/feMc2o4xyPaAkZ8.jpg)
+
 ## 代理配置
 
   - 手机上不能开VPN，否则无效
