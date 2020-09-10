@@ -45,7 +45,7 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 ## 基本配置
    
   由于过程较为繁琐，建议自行搜索关于Fiddler与安卓抓包的文章   
-  例如[这里](https://www.jianshu.com/p/6858a25674b4)。  
+  例如[这里](https://blog.csdn.net/gld824125233/article/details/52588275)。  
   关键就是要设置正确局域网Wifi代理地址, 通常是 
 
   地址：192.168.x.xx  
