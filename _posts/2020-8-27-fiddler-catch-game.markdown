@@ -8,7 +8,7 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 ---
 
 # Fiddler 安卓游戏抓包过程
-文章正在更新中。
+适配理论上所有版本，源码稍后发布
 
 # [脚本下载](#导入脚本)
   - v1.4 
@@ -29,6 +29,11 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
   - 恰当的修改数据包的内容，就可以欺骗客户端，拿到你的假数据
   - 美版游戏与中版游戏的版本不同，故游戏内容多少差点。
   
+<div style="font-size:30px; color:red; line-height:32px">
+<p>关于教程</p>
+<p>我暂时没有在发过任何教学视频，或付费服务</p>
+<p>如果想要充电，去给我充电吧。网站底部有我的B站链接。</p>
+</div>
 # 安装与配置Fiddler
 
 ## 安装 Fiddler
