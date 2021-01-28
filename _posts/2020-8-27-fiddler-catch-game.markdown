@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 安卓游戏抓包过程
-date: 2020-08-27 21:56:05 +0800
+date: 2021-01-28 20:00:00 +0800
 categories: Hacking
 tags: Unity
 img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
@@ -11,6 +11,10 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 文章正在更新中。
 
 # [脚本下载](#导入脚本)
+  - v1.5 
+    - 加入 Una(冰女)约会活动适配
+      **注意**截止此版本时，有些内容还没开放，功能尚不完善，第二个CG之后没开放下载
+    - 优化修改器版本的逻辑，只会将已拥有角色练到满级，避免使用未解锁的角色
   - v1.4 
     提供修改器版的脚本
   - v1.3 
@@ -40,7 +44,7 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
   - 电脑一台，最好能开Http代理
   - 手机需要与电脑在统一局域网
   - 可以使用Mumu模拟器，其他模拟器自行尝试
-  - **注意** 由于抓包不安全，不建议使用手机，建议用模拟器
+  - **注意** 由于抓包不安全，且高版本手机必须Root安装系统级证书，不建议使用手机，建议用模拟器
     
 ## 基本配置
    
@@ -51,7 +55,9 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
   地址：192.168.x.xx  
   端口：8888 
 
-  Mumu模拟器是在设置里，长按那个Wifi连接就可以填代理  
+  Mumu模拟器是在设置里，长按那个Wifi连接就可以填代理 
+  然后重要的是要安装证书
+
   根据教程下载Fiddler提供的证书
 
   - 点亮菜单上的“解码”按钮
@@ -60,7 +66,7 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 
 ## 代理配置
 
-  - 手机上不能开VPN，否则无效
+  - 手机或模拟器本身不能开VPN，否则无效
   - 关闭启动充当系统代理
   
   ![批注 2020-08-28 230428](https://i.loli.net/2020/08/28/3kLjKU9MzGQNm7b.jpg)
@@ -100,9 +106,10 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
   - 所有角色都将进入已召唤
   - 所有角色均5星及以上 点击右上方放大镜，切换卡片姿势
   - 8星突破角色       
-    包括 Venus，Elva 或更多
-  - 推出过CG收藏角色右上角的收藏按钮可以查看      
-    包括 Erica埃里卡(双枪女仆)，Clara克拉拉(化学老师)，Amy艾米(运动兽娘)，Flora菲歐娜(小号手)，Venus維納斯(神秘学姐)，Alberta艾伯塔(女皇)，Alice愛麗絲(电锯)，Elva埃爾瓦(赛博人)  
+    包括 Venus，Elva，Giselle，Alberta，Vivian，Geneva，Una 或更多
+  - 推出过活动CG收藏角色，从角色右上角，或首页右上角的收藏图鉴按钮可以查看   
+    **注意** 截止1.5版，Una(冰女)，第二个CG之后没开放下载
+    包括 Erica埃里卡(双枪女仆)，Clara克拉拉(化学老师)，Amy艾米(运动兽娘)，Flora菲歐娜(小号手)，Venus維納斯(神秘学姐)，Alberta艾伯塔(女皇)，Alice愛麗絲(电锯)，Elva埃爾瓦(赛博人)，Geneva(幽灵)，Giselle(巫女)，Lucy(蛋糕师)，Winni(潜水员)
     或更多
 
 ## 调教活动/猜拳活动 玩法
