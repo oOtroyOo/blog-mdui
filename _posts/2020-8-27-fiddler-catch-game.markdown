@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 安卓游戏抓包过程
-date: 2021-01-28 20:00:00 +0800
+date: 2021-05-05 20:00:00 +0800
 categories: Hacking
 tags: Unity
 img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
@@ -10,10 +10,13 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 # Fiddler 安卓游戏抓包过程
 适配理论上所有版本，源码稍后发布
 
+ **注意**服务端增设了CG验证机制，后续更新之后，可能都无法下载活动CG或觉醒立绘。
+    活动CG 例如vivian(侦探),Una(冰女)
+    觉醒立绘 例如 Juliana(调教官)
 # [脚本下载](#导入脚本)
   - v1.5 
     - 加入 Una(冰女)约会活动适配
-      **注意**截止此版本时，有些内容还没开放，功能尚不完善，第二个CG之后没开放下载
+     
     - 优化修改器版本的逻辑，只会将已拥有角色练到满级，避免使用未解锁的角色
   - v1.4 
     提供修改器版的脚本
@@ -110,10 +113,13 @@ img: https://i.loli.net/2020/08/27/syHFSzKueDYQAj2.jpg
 ## 解锁角色动画
   - 所有角色都将进入已召唤
   - 所有角色均5星及以上 点击右上方放大镜，切换卡片姿势
+  
   - 8星突破角色       
+    **注意** Juliana(调教官) 等，之后更新的觉醒角色由于服务端判定而**无法下载**，所以无法点进去，这个问题待处理。
     包括 Venus，Elva，Giselle，Alberta，Vivian，Geneva，Una 或更多
+
   - 推出过活动CG收藏角色，从角色右上角，或首页右上角的收藏图鉴按钮可以查看   
-    **注意** 截止1.5版，Una(冰女)，第二个CG之后没开放下载
+    **注意** Una(冰女)，vivian(侦探) 等，之后更新的活动CG可能由于服务端判定而**无法下载**
     包括 Erica埃里卡(双枪女仆)，Clara克拉拉(化学老师)，Amy艾米(运动兽娘)，Flora菲歐娜(小号手)，Venus維納斯(神秘学姐)，Alberta艾伯塔(女皇)，Alice愛麗絲(电锯)，Elva埃爾瓦(赛博人)，Geneva(幽灵)，Giselle(巫女)，Lucy(蛋糕师)，Winni(潜水员)
     或更多
 
