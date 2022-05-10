@@ -61,7 +61,6 @@ lastupdate : 2022-05-10 00:00:00 +0800
 - `GameManager`
 
 ``` csharp
-  //此处更改需要及时保存模块，下文有一条更改会引用这里
   private void Awake()
   {
     ////找到这里
