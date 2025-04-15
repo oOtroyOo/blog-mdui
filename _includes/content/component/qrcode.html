@@ -16,7 +16,8 @@
         </li>
         {% if  site.data.site.lang == 'zh-CN' %}
         <li class="mdui-menu-item">
-            <img class="mdui-center" src="https://api.imjad.cn/qrcode/?size=210&&text={{page.url | absolute_url |url_encode}}" alt="">
+            <!-- <img class="mdui-center" src="https://api.imjad.cn/qrcode/?size=210&&text={{page.url | absolute_url |url_encode}}" alt=""> -->
+            <img class="mdui-center" src="https://api.qrtool.cn/?size=210&&text={{page.url | absolute_url |url_encode}}&kid=cliim&key=32fa147ab4101b58aba8318c04adc492" alt=""> 
         </li>
         {% else %}
         <li class="mdui-menu-item">
