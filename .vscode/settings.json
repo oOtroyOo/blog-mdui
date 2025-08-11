@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "package-lock.json": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "search.exclude": {
+        "_site": true,
+        ".jekyll-cache": true,
+        ".ruby-lsp": true,
+        "node_modules": true,
+    }
+}
