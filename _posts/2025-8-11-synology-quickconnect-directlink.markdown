@@ -103,7 +103,7 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
 ~~~
   - 执行
     - `node ./index.js`
-  - 测试访问 `http://127.0.0.1:9000/media/video.mp4`
+  - 测试访问 `http://127.0.0.1:9000/[QuickConnect ID]/media/video.mp4`
   如果可以正常播放，那么就算完成了
 
 ## 部署服务端（可选）
@@ -124,6 +124,6 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
     - 认证方式 ✅无需认证
     - 抄下**公网访问地址URL**
   - 测试访问
-    - 访问 `https://[公网访问地址URL]/media/video.mp4`
+    - 访问 `https://[公网访问地址URL]/[QuickConnect ID]/media/video.mp4`
     - 正常播放，说明完成
 
