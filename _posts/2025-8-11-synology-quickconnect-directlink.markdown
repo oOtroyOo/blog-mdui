@@ -32,7 +32,8 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
   
   - 模拟请求
   
-      *国内账户使用 `https://global.quickconnect.cn/Serv.php` 全球账户使用 `https://global.quickconnect.to/Serv.php`*
+  1. 国内账户使用 `https://global.quickconnect.cn/Serv.php`
+  2. 全球账户使用 `https://global.quickconnect.to/Serv.php`
   
   - **POST**  `https://global.quickconnect.cn/Serv.php` 
   
