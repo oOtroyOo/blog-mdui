@@ -8,14 +8,27 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
 ---
 
 # 群晖Synology利用QuickConnect内网穿透获取直链下载
+  *[原文地址](https://www.troy-web.top/blog-mdui/synology/2025/08/11/synology-quickconnect-directlink.html)*
 
-## 前情提要
+<script id='orglink'>
+      if (document.URL.indexOf("troy-web.top")>-1 || document.URL.indexOf("127.0.0.1")>-1) {
+
+        var $currentScript = $('#orglink');
+        if ($currentScript) {
+            $currentScript.prev("p").remove();
+        }
+      }
+</script>
+
   - 有些时候需要直接访问ipv4文件URL地址，比如图片链接、或在线视频播放器，需要 `http:***xxx.mp4`的链接
   - 但是群晖Synology的QuickConnect内网穿透只能获取到一个中转页面，并不能直接访问
   - 所以需要利用底层机制他找到能够直接访问的直链，这样在线播放器就可以访问视频
 
   
 ## 前期准备
+
+
+
   - 参考网址
     - [通过群晖的 QuickConnect 访问第三方应用](https://null.studio/2020/02/16/access-thirdparty-web-via-synology-quickconnect/)
     - [使用群晖 QuickConnect 访问内网任意/第三方TCP服务](https://blog.lyc8503.net/post/10-all-in-quickconnect/)
@@ -103,14 +116,16 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
 {% include code/synology-quickconnect-directlink/index.js %}
 ~~~
 
-<script>
-var $currentScript = $(document.currentScript);
-$currentScript.prev(".language-javascript").find("pre")
-  .attr({
-    'data-download-link': '',
-    'data-src': "https://github.tianrld.top/https://raw.githubusercontent.com/oOtroyOo/blog-mdui/master/_includes/code/synology-quickconnect-directlink/index.js"
-  });
-$currentScript.remove();
+<script id='synology-quickconnect-directlink'>
+var $currentScript =$('#synology-quickconnect-directlink'); /*$(document.currentScript);*/
+if ($currentScript) {
+  $currentScript.prev(".language-javascript").find("pre")
+    .attr({
+      'data-download-link': '',
+      'data-src': "https://github.tianrld.top/https://raw.githubusercontent.com/oOtroyOo/blog-mdui/master/_includes/code/synology-quickconnect-directlink/index.js"
+    });
+  $currentScript.remove();
+}
 </script>
   - 执行
     - `node ./index.js`
