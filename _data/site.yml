@@ -69,7 +69,7 @@ prism:
     - java
   plugins: 
 
-mathjax: true
+mathjax: false
 
 google_analytics: ""  # google analytics code
 
