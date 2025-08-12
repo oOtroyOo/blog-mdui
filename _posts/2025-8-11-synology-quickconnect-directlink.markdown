@@ -103,14 +103,14 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
 {% include code/synology-quickconnect-directlink/index.js %}
 ~~~
 
-<script id='quickconnect-directlink-script'>
-const node = $('#quickconnect-directlink-script');
-node.prev(".language-javascript").find("pre")
+<script>
+var $currentScript = $(document.currentScript);
+$currentScript.prev(".language-javascript").find("pre")
   .attr({
     'data-download-link': '',
     'data-src': "https://github.tianrld.top/https://raw.githubusercontent.com/oOtroyOo/blog-mdui/master/_includes/code/synology-quickconnect-directlink/index.js"
   });
-node.remove();
+$currentScript.remove();
 </script>
   - 执行
     - `node ./index.js`
