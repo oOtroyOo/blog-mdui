@@ -98,16 +98,28 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
   
   - 编写 `index.js`
 
+
 ~~~ javascript
 {% include code/synology-quickconnect-directlink/index.js %}
 ~~~
+
+<script id='quickconnect-directlink-script'>
+const node = $('#quickconnect-directlink-script');
+node.prev(".language-javascript").find("pre")
+  .attr({
+    'data-download-link': '',
+    'data-src': "https://github.tianrld.top/https://raw.githubusercontent.com/oOtroyOo/blog-mdui/master/_includes/code/synology-quickconnect-directlink/index.js"
+  });
+node.remove();
+</script>
   - 执行
     - `node ./index.js`
   - 测试访问 `http://127.0.0.1:9000/[QuickConnect ID]/media/video.mp4`
   如果可以正常播放，那么就算完成了
 
 ## 部署服务端（可选）
-  这里采用阿里云，云函数FC3.0 + nodejs容器 实现。
+  - 你可以采用任何支持nodejs的服务器。没有具体限制
+  - 这里采用阿里云，云函数FC3.0 + nodejs容器 实现。
   - 账户相关略
   - 打开 https://fcnext.console.aliyun.com/
   - 在顶部选择合适的地区
