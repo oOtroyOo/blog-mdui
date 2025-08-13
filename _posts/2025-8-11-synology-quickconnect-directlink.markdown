@@ -36,7 +36,8 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
     - [使用群晖 QuickConnect 访问内网任意/第三方TCP服务](https://blog.lyc8503.net/post/10-all-in-quickconnect/)
 
   - 配置资源
-    - 假设你能已经根据以上教程，配置好了视频，使用浏览器通过访问
+    - 假设你能已经架好了，无论是内置WebStation还是自定nginx，
+    - 假设配置好了如下视频，使用浏览器通过访问
      
     `https://[qc-id].quickconnect.cn/media/video.mp4`
     - 能正常访问，说明前期准备就绪
