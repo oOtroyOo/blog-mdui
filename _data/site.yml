@@ -71,6 +71,7 @@ prism:
    - toolbar
    - download-button
    - copy-to-clipboard
+   - autoloader
 
 mathjax: false
 

@@ -13,7 +13,6 @@
     {% if site.data.site.google_site_verification != "" %}
     <meta name="google-site-verification" content="{{ site.data.site.google_site_verification }}">
     {% endif %}
-    {% include content/component/highlight_head.html %}
     {% if site.data.site.uiux.meng == true %}
     {% if site.data.meng.animation.switch == true %}
     <link rel="stylesheet" href="https://cdn.staticfile.net/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -36,7 +35,7 @@
     <link rel="preload" href="{{ "/assets/css/global.css" | prepend: site.baseurl }}" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.staticfile.net/mdui/0.3.0/css/mdui.min.css"></noscript>
     <noscript><link rel="stylesheet" href="{{ "/assets/css/global.css" | prepend: site.baseurl }}"></noscript>
-
+    {% include content/component/highlight_head.html %}
     {% include component/nprogress.html %}
     <script>
 var defaultTitle = document.title;
@@ -62,6 +61,9 @@ jQuery(document).ready(function($) {
         $('.mdui-tooltip').remove();
         $(".mdui-container").fadeOut(300,function(){
             $('.container').html($(data).find('.content')); 
+            $('.container').ready(() => {
+                Prism.highlightAll();
+            });
             document.title = data.match(/<title>(.*?)<\/title>/)[1];
             defaultTitle = document.title;
             NProgress.done();

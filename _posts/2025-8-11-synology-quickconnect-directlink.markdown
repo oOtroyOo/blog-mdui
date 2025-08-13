@@ -10,12 +10,11 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
 # 群晖Synology利用QuickConnect内网穿透获取直链下载
   *[原文地址](https://www.troy-web.top/blog-mdui/synology/2025/08/11/synology-quickconnect-directlink.html)*
 
-<script>
-  var $currentScript = Prism.util.currentScript();
-  
+<script id='orglink'>
   if (document.URL.indexOf("troy-web.top") > -1 || document.URL.indexOf("127.0.0.1") > -1) {
 
     $('.container').ready(() => {
+      var $currentScript = $('#orglink');
       $currentScript.prev("p").css("display", "none");
       $currentScript.remove();
     });
@@ -54,50 +53,52 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
   
   - **POST**  `https://global.quickconnect.cn/Serv.php` 
   
-    - Json Body  (替换自己的 QuickConnect ID)
-  ~~~ json5
-    [
-        {  // *HTTP的body*
-            "version": 1,
-            "command": "get_server_info",
-            "stop_when_error": false,
-            "stop_when_success": false,
-            "id": "mainapp_http",
-            "serverID": "[QuickConnect ID]",
-            "is_gofile": false,
-            "path": ""
-        },
-        {   // *HTTPS的body*
-            "version": 1,
-            "command": "get_server_info",
-            "stop_when_error": false,
-            "stop_when_success": false,
-            "id": "mainapp_https",
-            "serverID": "[QuickConnect ID]",
-            "is_gofile": false,
-            "path": ""
-        }
-    ]
-  ~~~
+    Json Body  (替换自己的 QuickConnect ID)
+
+~~~ json5
+[
+    {  // *HTTP的body*
+        "version": 1,
+        "command": "get_server_info",
+        "stop_when_error": false,
+        "stop_when_success": false,
+        "id": "mainapp_http",
+        "serverID": "[QuickConnect ID]",
+        "is_gofile": false,
+        "path": ""
+    },
+    {   // *HTTPS的body*
+        "version": 1,
+        "command": "get_server_info",
+        "stop_when_error": false,
+        "stop_when_success": false,
+        "id": "mainapp_https",
+        "serverID": "[QuickConnect ID]",
+        "is_gofile": false,
+        "path": ""
+    }
+]
+~~~
 
   - 发送请求，返回结果
-  ~~~ json5
-    [
-        {
+
+~~~ json5
+  [
+      {
+          // ...
+          "service": {
             // ...
-            "service": {
+              "relay_ip": "*ip*",
+              "relay_port": *port*,
               // ...
-                "relay_ip": "*ip*",
-                "relay_port": *port*,
-                // ...
-            },
-            // ...
-        },
-        {
-        // ...
-        }
-    ]
-  ~~~
+          },
+          // ...
+      },
+      {
+      // ...
+      }
+  ]
+~~~
 
   - 如果能拿到以上信息，然后再次打开以上链接: `http://*ip*:*port*/media/video.mp4`  说明解析成功可以访问
 
@@ -119,11 +120,10 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
 {% include code/synology-quickconnect-directlink/index.js %}
 ~~~
 
-<script>
-  var $currentScript = Prism.util.currentScript();
+<script id='synology-quickconnect-directlink'>
 
   $('.container').ready(() => {
-     /*var $currentScript = $('#synology-quickconnect-directlink');$(document.currentScript);*/
+    var $currentScript = $('#synology-quickconnect-directlink'); /*$(document.currentScript);*/
     if ($currentScript) {
       $currentScript.prev(".language-javascript").find("pre")
         .attr({
