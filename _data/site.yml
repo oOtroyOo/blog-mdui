@@ -68,6 +68,9 @@ prism:
     - javascript
     - java
   plugins: 
+   - toolbar
+   - download-button
+   - copy-to-clipboard
 
 mathjax: false
 
@@ -86,7 +89,7 @@ custom_css: "" # Use the assets/css/customCss.css
 
 custom_js: "" # Use the assets/js/customJS.js
 
-ads : true
+ads : false
 
 
 beian : "蜀ICP备18009358号-1"

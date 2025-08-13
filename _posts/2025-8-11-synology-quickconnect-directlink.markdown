@@ -10,14 +10,17 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
 # 群晖Synology利用QuickConnect内网穿透获取直链下载
   *[原文地址](https://www.troy-web.top/blog-mdui/synology/2025/08/11/synology-quickconnect-directlink.html)*
 
-<script id='orglink'>
-      if (document.URL.indexOf("troy-web.top")>-1 || document.URL.indexOf("127.0.0.1")>-1) {
+<script>
+  var $currentScript = Prism.util.currentScript();
+  
+  if (document.URL.indexOf("troy-web.top") > -1 || document.URL.indexOf("127.0.0.1") > -1) {
 
-        var $currentScript = $('#orglink');
-        if ($currentScript) {
-            $currentScript.prev("p").remove();
-        }
-      }
+    $('.container').ready(() => {
+      $currentScript.prev("p").css("display", "none");
+      $currentScript.remove();
+    });
+  }
+
 </script>
 
   - 有些时候需要直接访问ipv4文件URL地址，比如图片链接、或在线视频播放器，需要 `http:***xxx.mp4`的链接
@@ -116,17 +119,22 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
 {% include code/synology-quickconnect-directlink/index.js %}
 ~~~
 
-<script id='synology-quickconnect-directlink'>
-var $currentScript =$('#synology-quickconnect-directlink'); /*$(document.currentScript);*/
-if ($currentScript) {
-  $currentScript.prev(".language-javascript").find("pre")
-    .attr({
-      'data-download-link': '',
-      'data-src': "https://github.tianrld.top/https://raw.githubusercontent.com/oOtroyOo/blog-mdui/master/_includes/code/synology-quickconnect-directlink/index.js"
-    });
-  $currentScript.remove();
-}
+<script>
+  var $currentScript = Prism.util.currentScript();
+
+  $('.container').ready(() => {
+     /*var $currentScript = $('#synology-quickconnect-directlink');$(document.currentScript);*/
+    if ($currentScript) {
+      $currentScript.prev(".language-javascript").find("pre")
+        .attr({
+          'data-download-link': '',
+          'data-src': "https://github.tianrld.top/https://raw.githubusercontent.com/oOtroyOo/blog-mdui/master/_includes/code/synology-quickconnect-directlink/index.js"
+        });
+      /*$currentScript.remove();*/
+    }
+  });
 </script>
+
   - 执行
     - `node ./index.js`
   - 测试访问 `http://127.0.0.1:9000/[QuickConnect ID]/media/video.mp4`

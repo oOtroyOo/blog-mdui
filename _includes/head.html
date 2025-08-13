@@ -7,13 +7,13 @@
 <meta name="baidu_union_verify" content="7afc7abfdc9214b18423ea1b6f1cd545">
     {% if page.layout =="post" %}
     <meta name="keywords" content="{% for pagetag in page.tags %}{{pagetag}} {% endfor %}">
-    {% include content/component/highlight_head.html %}
     {% else %}
     <meta name="keywords" content="{{ site.data.site.head.keywords }}">
     {% endif %}
     {% if site.data.site.google_site_verification != "" %}
     <meta name="google-site-verification" content="{{ site.data.site.google_site_verification }}">
     {% endif %}
+    {% include content/component/highlight_head.html %}
     {% if site.data.site.uiux.meng == true %}
     {% if site.data.meng.animation.switch == true %}
     <link rel="stylesheet" href="https://cdn.staticfile.net/ajax/libs/animate.css/3.5.2/animate.min.css">

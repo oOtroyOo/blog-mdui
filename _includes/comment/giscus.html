@@ -13,3 +13,9 @@
         crossorigin="anonymous"
         async>
 </script>
+<script>
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        $('script').filter((i, e) => $(e).attr('src') != undefined && $(e).attr('src').indexOf('giscus') > -1).remove();
+        $('.giscus').remove();
+    }
+</script>
