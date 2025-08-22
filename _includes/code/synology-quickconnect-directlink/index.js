@@ -51,7 +51,7 @@ async function handle(req, res) {
 
     if (qc_map[qc_id]) {
         let url = new URL(req.url.substring(qc_id.length + 1), `http://${qc_map[qc_id].relay_ip}:${qc_map[qc_id].relay_port}`);
-        res.writeHead(301, { 'Location': url.toString() });
+        res.writeHead(308, { 'Location': url.toString() });
     } else {
         res.writeHead(404, { 'Content-Type': 'text/plain;charset=utf-8' });
         res.end('Not Found');

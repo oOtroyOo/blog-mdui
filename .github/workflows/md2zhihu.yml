@@ -2,7 +2,12 @@
 # https://github.com/drmingdrmer/md2zhihu
 
 name: md2zhihu
-on: [push]
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '_posts/**'
+      - '_includes/**'
 jobs:
   md2zhihu:
     runs-on: ubuntu-latest

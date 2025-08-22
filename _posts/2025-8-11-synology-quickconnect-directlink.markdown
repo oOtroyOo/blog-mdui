@@ -104,7 +104,7 @@ img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
   - 如果能拿到以上信息，然后再次打开以上链接: `http://*ip*:*port*/media/video.mp4`  说明解析成功可以访问
 
 ## 编写解析器
-  - 通过以上方式，获得了直链的ip和端口，然后header返回301+location就完成了。
+  - 通过以上方式，获得了直链的ip和端口，然后header返回308(PermanentRedirect)+location就完成了。
   - 暂时只使用http，https因为还有证书问题，后续再研究。
 
   1. nodejs 实现
