@@ -1,4 +1,30 @@
 <div class="giscus"></div>
+<script>
+    if (true || !(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+        $('.container').ready(() => {
+            if ($('.giscus').find('script[src="https://giscus.app/client.js"]').length == 0) {
+                const script = document.createElement('script');
+                script.src = 'https://giscus.app/client.js';
+                script.setAttribute('data-repo', '{{ site.data.site.comment.giscus_repo }}');
+                script.setAttribute('data-repo-id', '{{ site.data.site.comment.giscus_repo_id }}');
+                script.setAttribute('data-category-id', '{{ site.data.site.comment.giscus_category_id }}');
+                script.setAttribute('data-mapping', 'title');
+                script.setAttribute('data-strict', '0');
+                script.setAttribute('data-reactions-enabled', '0');
+                script.setAttribute('data-emit-metadata', '0');
+                script.setAttribute('data-input-position', 'top');
+                script.setAttribute('data-theme', 'light');
+                script.setAttribute('data-lang', 'zh-CN');
+                script.crossOrigin = 'anonymous';
+                script.async = true;
+                document.querySelector('.giscus').appendChild(script);
+            }
+        });
+    }
+
+</script>
+
+<!-- 
 <script src="https://giscus.app/client.js"
         data-repo="{{ site.data.site.comment.giscus_repo }}"
         data-repo-id="{{ site.data.site.comment.giscus_repo_id }}"
@@ -19,3 +45,4 @@
         $('.giscus').remove();
     }
 </script>
+-->
