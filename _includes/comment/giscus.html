@@ -1,6 +1,6 @@
 <div class="giscus"></div>
 <script>
-    if (true || !(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    if (!(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
         $('.container').ready(() => {
             if ($('.giscus').find('script[src="https://giscus.app/client.js"]').length == 0) {
                 const script = document.createElement('script');
