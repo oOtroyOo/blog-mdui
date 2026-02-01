@@ -50,7 +50,7 @@ jquery_lazyload_js: "https://cf.troy-web.top/p/cdn.jsdelivr.net/npm/jquery_lazyl
 # jquery_lazyload_js: "https://cdn.iocdn.cc/npm/jquery_lazyload@1.9.3/jquery.lazyload.min.js"
 # jquery_lazyload_js: "https://cdn.staticfile.net/jquery_lazyload/1.9.7/jquery.lazyload.min.js"
 
-aplayer_js: "https://cf.troy-web.top/p/cdn.jsdelivr.net/npm/aplayer1.6.0/dist/APlayer.min.js"
+aplayer_js: "https://cf.troy-web.top/p/cdn.jsdelivr.net/npm/aplayer@1.6.0/dist/APlayer.min.js"
 
 # aplayer_js: "https://cdn.iocdn.cc/npm/aplayer@1.6.0/dist/APlayer.min.js"
 # aplayer_js: "https://cdn.staticfile.net/aplayer/1.6.0/APlayer.min.js"
