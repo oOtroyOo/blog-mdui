@@ -4,7 +4,7 @@ title: 群晖Synology利用QuickConnect内网穿透获取直链下载
 date: 2025-08-11 09:39:34 +0800
 categories: Synology
 tags: 
-img:  https://iili.io/FQRjHiX.png ##https://freeimage.host/i/FQRjHiX
+img:  https://iili.io/fQeoz4p.jpg ##https://freeimage.host/i/fQeoz4p
 ---
 
 # 群晖Synology利用QuickConnect内网穿透获取直链下载
